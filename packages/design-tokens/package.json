@@ -1,6 +1,6 @@
 {
   "name": "@monetizekit/design-tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Framework-agnostic MonetizeKit design tokens (Brand Direction v0.7) — the single source of truth, with a theme × palette × mode resolver and build artifacts for JS/TS, CSS, Tailwind, and the SDK --mk-* contract.",
   "license": "MIT",
   "repository": {
@@ -9,7 +9,9 @@
     "directory": "packages/design-tokens"
   },
   "type": "module",
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
