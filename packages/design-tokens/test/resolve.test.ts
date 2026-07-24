@@ -86,12 +86,17 @@ describe("resolveTokens", () => {
     expect(nordLight.semantic.background).not.toBe(brandLight.semantic.background);
   });
 
-  it("carries the frozen brand ramp and structure regardless of palette", () => {
-    const r = resolveTokens({ palette: "dracula", mode: "dark" });
-    expect(r.brand).toBe(BRAND);
-    expect(r.brand.colors.orange).toBe("#FF6B35");
-    expect(r.brand.radius).toBe("0");
-    expect(r.brand.shadow.sm).toBe("4px 4px 0 0 #1A1A1A");
+  it("carries the frozen brand ramp/structure regardless of palette, mode-aware for neutrals (§12)", () => {
+    const light = resolveTokens({ palette: "dracula", mode: "light" });
+    expect(light.brand).toEqual(BRAND); // the default BRAND export is the light identity
+    expect(light.brand.colors.orange).toBe("#FF6B35");
+    expect(light.brand.radius).toBe("0");
+    expect(light.brand.shadow.sm).toBe("4px 4px 0 0 #1A1A1A");
+
+    const dark = resolveTokens({ palette: "dracula", mode: "dark" });
+    expect(dark.brand.colors.orange).toBe("#FF6B35"); // saturated colors are constant
+    expect(dark.brand.radius).toBe("0"); // structure is constant
+    expect(dark.brand.shadow.sm).toBe("4px 4px 0 0 #AFAD98"); // shadow references the dimmed shade
   });
 
   it("system mode collapses to a concrete resolvedMode but preserves the request", () => {

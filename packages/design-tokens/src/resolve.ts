@@ -1,4 +1,4 @@
-import { BRAND } from "./brand.js";
+import { ON_COLOR, resolveBrand } from "./brand.js";
 import { BRAND_SEMANTIC_BASE, PALETTES } from "./palettes.js";
 import type {
   Mode,
@@ -60,7 +60,8 @@ export function resolveTokens(input: ResolveInput = {}, options: ResolveOptions 
     palette,
     mode,
     resolvedMode,
-    brand: BRAND,
+    brand: resolveBrand(resolvedMode),
+    onColor: ON_COLOR,
     semantic: resolveSemantic(palette, resolvedMode),
   };
 }
