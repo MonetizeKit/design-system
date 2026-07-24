@@ -1,0 +1,210 @@
+/*
+ * @monetizekit/brand — brand.css
+ * Framework-agnostic brand identity utilities for Brand Direction v0.8, built entirely on the
+ * @monetizekit/design-tokens custom properties (--mk-*). Works in any framework or plain HTML.
+ *
+ * Imports design-tokens/css so the token custom properties, [data-theme="dark"] inversion, and
+ * the fixed .on-color light-island set are all available to consumers of this stylesheet alone.
+ */
+@import "@monetizekit/design-tokens/css";
+
+/* ── §09 Structure primitives ─────────────────────────────────────────────── */
+
+.mk-edge {
+  border: var(--mk-border-panel) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+}
+.mk-edge-chip {
+  border: var(--mk-border-chip) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+}
+
+/* Hard, no-blur shadow. Uses the mode-aware `shade` (dimmed in dark, §12), never the edge color. */
+.mk-shadow-sm {
+  box-shadow: var(--mk-shadow-sm);
+}
+.mk-shadow-md {
+  box-shadow: var(--mk-shadow-md);
+}
+.mk-shadow-lg {
+  box-shadow: var(--mk-shadow-lg);
+}
+
+/* A panel: 3px edge + hard shadow + radius 0. */
+.mk-panel {
+  background: var(--mk-paper);
+  color: var(--mk-ink);
+  border: var(--mk-border-panel) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+  box-shadow: var(--mk-shadow-md);
+}
+
+/* Focus: border + shadow turn violet; :focus-visible outline 3px violet, offset 3px (§09). */
+.mk-focusable:focus-visible {
+  outline: 3px solid var(--mk-violet);
+  outline-offset: 3px;
+}
+.mk-focusable:focus-visible.mk-edge,
+.mk-focusable:focus-visible.mk-panel {
+  border-color: var(--mk-violet);
+  box-shadow: 4px 4px 0 0 var(--mk-violet);
+}
+
+/* Disabled: no shadow, flat grey (§09). */
+.mk-disabled,
+[disabled].mk-panel,
+[disabled].mk-edge {
+  background: #e4e3d6;
+  color: #9c9c92;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ── §05 Typography ──────────────────────────────────────────────────────── */
+
+.mk-display {
+  font-family: var(--mk-font-sans);
+  font-weight: var(--mk-display-weight);
+  letter-spacing: var(--mk-tracking-display);
+}
+.mk-body {
+  font-family: var(--mk-font-sans);
+  font-weight: var(--mk-body-weight);
+}
+.mk-label,
+.mk-mono {
+  font-family: var(--mk-font-mono);
+}
+.mk-label {
+  text-transform: uppercase;
+  letter-spacing: var(--mk-tracking-label);
+}
+
+/* ── §03 Grounds — one ground color per section, separated by a 3px black rule ─ */
+
+.g-cream {
+  background: var(--mk-cream);
+  color: var(--mk-ink);
+}
+.g-paper {
+  background: var(--mk-paper);
+  color: var(--mk-ink);
+}
+.g-lavender {
+  background: var(--mk-lavender);
+  color: var(--mk-ink);
+}
+.g-footer {
+  background: var(--mk-footer-bg);
+  color: var(--mk-cream);
+}
+
+/*
+ * Saturated grounds are light-mode "islands" (§12): they do NOT invert in dark. Applying
+ * `.on-color` alongside them re-pins the neutral tokens to their fixed light values, so a
+ * yellow/orange section keeps a black edge + black text on a dark page. The `.on-color` class
+ * itself is emitted by design-tokens/css.
+ */
+.g-orange {
+  background: var(--mk-orange);
+}
+.g-action {
+  background: var(--mk-action);
+}
+.g-yellow {
+  background: var(--mk-yellow);
+}
+.g-violet {
+  background: var(--mk-violet);
+  color: var(--mk-cream);
+}
+.g-pink {
+  background: var(--mk-pink);
+  color: var(--mk-cream);
+}
+.g-cyan {
+  background: var(--mk-cyan);
+}
+.g-mint {
+  background: var(--mk-mint);
+}
+
+.mk-rule {
+  border: 0;
+  border-top: var(--mk-border-panel) solid var(--mk-ink);
+  margin: 0;
+}
+
+/* ── §03 Textures — one texture per ground ───────────────────────────────── */
+
+.tex-dots {
+  background-image: radial-gradient(
+    var(--mk-texture-dot-color) var(--mk-texture-dot-size),
+    transparent var(--mk-texture-dot-size)
+  );
+  background-size: var(--mk-texture-grid-size) var(--mk-texture-grid-size);
+}
+.tex-dots-soft {
+  background-image: radial-gradient(
+    var(--mk-texture-dot-color-soft) var(--mk-texture-dot-size),
+    transparent var(--mk-texture-dot-size)
+  );
+  background-size: var(--mk-texture-grid-size) var(--mk-texture-grid-size);
+}
+.tex-stripe {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--mk-stripe) 0,
+    var(--mk-stripe) 2px,
+    transparent 2px,
+    transparent 12px
+  );
+}
+
+/* ── §04 Tilt — small objects ±12° alternating; panels −2°…+2°; hover straightens ─ */
+
+.tilt-12 {
+  transform: rotate(12deg);
+  transition: transform 0.15s ease;
+}
+.tilt--12 {
+  transform: rotate(-12deg);
+  transition: transform 0.15s ease;
+}
+.tilt-badge {
+  transform: rotate(var(--mk-tilt-badge));
+  transition: transform 0.15s ease;
+}
+.tilt-panel {
+  transform: rotate(var(--mk-tilt-panel-min));
+  transition: transform 0.15s ease;
+}
+.tilt-panel-max {
+  transform: rotate(var(--mk-tilt-panel-max));
+  transition: transform 0.15s ease;
+}
+.tilt-12:hover,
+.tilt--12:hover,
+.tilt-badge:hover,
+.tilt-panel:hover,
+.tilt-panel-max:hover {
+  transform: rotate(0deg);
+}
+
+/* ≤900px: large panels sit square; small-object tilt stays ±12° (§04). */
+@media (max-width: 900px) {
+  .tilt-panel,
+  .tilt-panel-max {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-12,
+  .tilt--12,
+  .tilt-badge,
+  .tilt-panel,
+  .tilt-panel-max {
+    transition: none;
+  }
+}

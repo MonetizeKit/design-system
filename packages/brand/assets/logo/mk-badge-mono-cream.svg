@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="MonetizeKit monochrome (cream on dark)">
+  <rect x="16" y="16" width="480" height="480" fill="none" stroke="#FFFEF3" stroke-width="24"/>
+  <g fill="none" stroke="#FFFEF3" stroke-width="46" stroke-linecap="butt" stroke-linejoin="miter">
+    <path d="M110 350 L110 160 L180 270 L250 160 L250 350"/>
+    <path d="M300 160 L300 350"/>
+    <path d="M300 258 L420 160"/>
+    <path d="M300 258 L420 350"/>
+  </g>
+</svg>

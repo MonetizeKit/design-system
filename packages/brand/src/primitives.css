@@ -1,0 +1,131 @@
+/*
+ * @monetizekit/brand — primitives.css
+ * Framework-agnostic CSS for the signature brand primitives (§01, §10): the verdict pill, the
+ * console window, the stat card, and decorative shapes. Built on the design-tokens --mk-* vars;
+ * import brand.css (or design-tokens/css) first so the tokens are defined.
+ */
+
+/* ── Verdict pill (§01/§10): ALLOW · DENY · REQUIRE_TOP_UP · DEGRADE · RECORDED ─ */
+
+.mk-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.15em 0.6em;
+  font-family: var(--mk-font-mono);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: var(--mk-tracking-label);
+  color: var(--mk-onlight);
+  border: var(--mk-border-chip) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+}
+.mk-verdict--allow {
+  background: var(--mk-mint-wash);
+}
+.mk-verdict--deny {
+  background: var(--mk-red-wash);
+}
+.mk-verdict--require-top-up {
+  background: var(--mk-yellow-wash);
+}
+.mk-verdict--degrade {
+  background: var(--mk-cyan-wash);
+}
+.mk-verdict--recorded {
+  background: var(--mk-lavender-wash);
+}
+
+/* ── Console window (§01): a tilted-slightly panel with a title bar + dots ───── */
+
+.mk-console {
+  background: var(--mk-paper);
+  color: var(--mk-ink);
+  border: var(--mk-border-panel) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+  box-shadow: var(--mk-shadow-lg);
+  overflow: hidden;
+  font-family: var(--mk-font-mono);
+}
+.mk-console__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.5em 0.75em;
+  background: var(--mk-cream);
+  border-bottom: var(--mk-border-panel) solid var(--mk-ink);
+}
+.mk-console__dot {
+  width: 0.75em;
+  height: 0.75em;
+  border: var(--mk-border-chip) solid var(--mk-onlight);
+  border-radius: 999px;
+}
+.mk-console__dot--r {
+  background: var(--mk-red);
+}
+.mk-console__dot--y {
+  background: var(--mk-yellow);
+}
+.mk-console__dot--g {
+  background: var(--mk-mint);
+}
+.mk-console__body {
+  padding: 0.9em 1em;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.mk-console__audit {
+  color: var(--mk-violet-txt);
+}
+
+/* ── Stat card (§01): a large, slightly tilted panel with a big display figure ─ */
+
+.mk-statcard {
+  background: var(--mk-paper);
+  color: var(--mk-ink);
+  border: var(--mk-border-panel) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+  box-shadow: var(--mk-shadow-md);
+  padding: 1.25em;
+}
+.mk-statcard__label {
+  font-family: var(--mk-font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--mk-tracking-label);
+  font-size: 0.75rem;
+  color: var(--mk-muted);
+}
+.mk-statcard__value {
+  font-family: var(--mk-font-sans);
+  font-weight: var(--mk-display-weight);
+  letter-spacing: var(--mk-tracking-display);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* ── Decorative shapes (§03): drift low-opacity in margins; never over body/panels ─ */
+
+.mk-decor {
+  position: absolute;
+  opacity: 0.14;
+  pointer-events: none;
+  border: var(--mk-border-chip) solid currentColor;
+}
+.mk-decor--circle {
+  border-radius: 999px;
+}
+.mk-decor--square {
+  border-radius: 0;
+}
+.mk-decor--triangle {
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 1.6em solid currentColor;
+  opacity: 0.14;
+}
