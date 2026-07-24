@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="900" height="220" role="img" aria-label="MonetizeKit">
+  <!-- upright badge lockup -->
+  <g transform="translate(10 10)">
+    <rect x="18" y="18" width="180" height="180" fill="#1A1A1A"/>
+    <rect x="6" y="6" width="180" height="180" fill="#ED7445" stroke="#1A1A1A" stroke-width="8"/>
+    <g fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="butt" stroke-linejoin="miter" transform="translate(6 6) scale(0.3516)">
+      <path d="M110 350 L110 160 L180 270 L250 160 L250 350"/>
+      <path d="M300 160 L300 350"/>
+      <path d="M300 258 L420 160"/>
+      <path d="M300 258 L420 350"/>
+    </g>
+  </g>
+  <text x="240" y="140" fill="#1A1A1A" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="900" font-size="112" letter-spacing="-3">MonetizeKit</text>
+</svg>

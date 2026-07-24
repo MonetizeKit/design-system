@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 560" width="560" height="560" role="img" aria-label="MonetizeKit badge">
+  <!-- tilted -12 deg per sec 01; hover-straighten is a CSS concern, the static asset is pre-tilted -->
+  <g transform="rotate(-12 280 280)">
+    <rect x="72" y="72" width="440" height="440" fill="#1A1A1A"/>
+    <rect x="48" y="48" width="440" height="440" fill="#ED7445" stroke="#1A1A1A" stroke-width="18"/>
+    <g fill="none" stroke="#1A1A1A" stroke-width="42" stroke-linecap="butt" stroke-linejoin="miter" transform="translate(48 48) scale(0.7734)">
+      <path d="M110 350 L110 160 L180 270 L250 160 L250 350"/>
+      <path d="M300 160 L300 350"/>
+      <path d="M300 258 L420 160"/>
+      <path d="M300 258 L420 350"/>
+    </g>
+  </g>
+</svg>

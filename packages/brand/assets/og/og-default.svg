@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="MonetizeKit - The monetization control plane.">
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFEF3"/>
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#1A1A1A" stroke-width="16"/>
+  <g transform="translate(96 150)">
+    <rect x="18" y="18" width="200" height="200" fill="#1A1A1A"/>
+    <rect x="0" y="0" width="200" height="200" fill="#ED7445" stroke="#1A1A1A" stroke-width="10"/>
+    <g fill="none" stroke="#1A1A1A" stroke-width="22" stroke-linecap="butt" stroke-linejoin="miter" transform="scale(0.3906)">
+      <path d="M110 350 L110 160 L180 270 L250 160 L250 350"/>
+      <path d="M300 160 L300 350"/>
+      <path d="M300 258 L420 160"/>
+      <path d="M300 258 L420 350"/>
+    </g>
+  </g>
+  <text x="96" y="440" fill="#1A1A1A" font-family="Inter, system-ui, -apple-system, sans-serif" font-weight="900" font-size="120" letter-spacing="-4">MonetizeKit</text>
+  <text x="100" y="520" fill="#5C5C55" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="40" letter-spacing="2">The monetization control plane.</text>
+</svg>

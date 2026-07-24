@@ -1,0 +1,53 @@
+{
+  "name": "@monetizekit/brand",
+  "version": "0.0.0",
+  "description": "MonetizeKit brand identity (Brand Direction v0.8) — framework-agnostic brand.css utilities, signature primitives, and the canonical media asset system (logo/icons/social/OG), built on @monetizekit/design-tokens.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MonetizeKit/design-system.git",
+    "directory": "packages/brand"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./css": "./dist/brand.css",
+    "./primitives.css": "./dist/primitives.css",
+    "./assets/*": "./dist/assets/*",
+    "./assets.json": "./dist/assets.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup && node scripts/build-assets.mjs",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@monetizekit/design-tokens": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "sharp": "^0.33.5",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
