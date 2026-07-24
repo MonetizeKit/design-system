@@ -73,6 +73,8 @@ exports[`CSS serialization > snapshots the brand default light custom properties
   --mk-peach: #F4BB92;
   --mk-pink: #EA336F;
   --mk-pink-wash: #FBE6EE;
+  --mk-purple: #4F46E5;
+  --mk-purple-d: #3730B5;
   --mk-purple-txt: #4F46E5;
   --mk-radius: 0;
   --mk-red: #E5322D;
@@ -82,6 +84,9 @@ exports[`CSS serialization > snapshots the brand default light custom properties
   --mk-shadow-md: 6px 6px 0 0 #1A1A1A;
   --mk-shadow-sm: 4px 4px 0 0 #1A1A1A;
   --mk-signal-yellow: #FFD240;
+  --mk-soc-cyan: #02D9FF;
+  --mk-soc-green: #B6FFB6;
+  --mk-soc-yellow: #FFD240;
   --mk-stripe: #D1D1E2;
   --mk-texture-dot-color: #CBAE4E;
   --mk-texture-dot-color-soft: rgba(26, 26, 26, 0.07);

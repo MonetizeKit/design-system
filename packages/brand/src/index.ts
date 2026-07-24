@@ -14,10 +14,26 @@ export {
   LOGO_ASSETS,
   ICON_ASSETS,
   RASTER_ICONS,
+  GLYPH_ICON_ASSETS,
+  SOCIAL_ICON_ASSETS,
   SOCIAL_ASSETS,
   ASSETS,
   assetImport,
 } from "./assets.js";
+
+export type { GlyphNode, IconName, IconCategory, IconMeta } from "./icons.js";
+export {
+  ICON_VIEWBOX,
+  ICON_STROKE_WIDTH,
+  ICON_GLYPHS,
+  ICON_META,
+  ICON_NAMES,
+  SATURATED_CATEGORIES,
+  glyphToSvgChildren,
+} from "./icons.js";
+
+export type { SocialName, SocialTone, SocialMeta } from "./social.js";
+export { SOCIAL_VIEWBOX, SOCIAL_GLYPHS, SOCIAL_META, SOCIAL_NAMES } from "./social.js";
 
 export type { OgNode, OgTemplateProps } from "./og/template.js";
 export { OG_SIZE, ogTemplate } from "./og/template.js";

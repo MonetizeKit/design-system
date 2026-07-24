@@ -104,6 +104,13 @@ export interface BrandColors {
   mint: string;
   peach: string;
   "signal-yellow": string;
+  /** Endorsement purple (`#4F46E5`) and its deep shade (`#3730B5`) — eyebrows, accents. */
+  purple: string;
+  "purple-d": string;
+  /** Social-tile grounds (§footer): cyan `#02D9FF`, yellow `#FFD240`, green `#B6FFB6`. */
+  "soc-cyan": string;
+  "soc-yellow": string;
+  "soc-green": string;
   muted: string;
   faint: string;
   "line-soft": string;

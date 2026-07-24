@@ -106,6 +106,88 @@
   line-height: 1;
 }
 
+/* ── Icon tile (§07/§08): a line icon on a saturated colour tile, black edge + hard shadow ─
+ * Icon tiles are saturated "objects": per §12 they keep a black edge + black shadow in both
+ * modes, so they pin structure to `onlight` rather than the mode-aware `ink`/`shade`. */
+
+.mk-icon {
+  display: block;
+}
+.mk-icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: var(--mk-border-panel) solid var(--mk-onlight);
+  border-radius: var(--mk-radius);
+  box-shadow: 4px 4px 0 0 var(--mk-onlight);
+}
+.mk-icon-tile > .mk-icon {
+  width: 50%;
+  height: 50%;
+}
+/* Saturated fills carry a white stroke; light fills carry an ink stroke (§07). */
+.mk-icon-tile--orange {
+  background: var(--mk-action);
+  color: #fff;
+}
+.mk-icon-tile--violet {
+  background: var(--mk-violet);
+  color: #fff;
+}
+.mk-icon-tile--pink {
+  background: var(--mk-pink);
+  color: #fff;
+}
+.mk-icon-tile--green {
+  background: var(--mk-green);
+  color: #fff;
+}
+.mk-icon-tile--cyan {
+  background: var(--mk-cyan);
+  color: var(--mk-onlight);
+}
+.mk-icon-tile--yellow {
+  background: var(--mk-yellow);
+  color: var(--mk-onlight);
+}
+.mk-icon-tile--mint {
+  background: var(--mk-mint);
+  color: var(--mk-onlight);
+}
+.mk-icon-tile--peach {
+  background: var(--mk-peach);
+  color: var(--mk-onlight);
+}
+
+/* ── Social tile (§footer): filled social glyph on a soc-* ground, tilted ±12° ───── */
+
+.mk-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  color: var(--mk-onlight);
+  border: var(--mk-border-panel) solid var(--mk-onlight);
+  border-radius: var(--mk-radius);
+}
+.mk-social > .mk-icon {
+  width: 50%;
+  height: 50%;
+  fill: currentColor;
+}
+.mk-social--cyan {
+  background: var(--mk-soc-cyan);
+}
+.mk-social--yellow {
+  background: var(--mk-soc-yellow);
+}
+.mk-social--green {
+  background: var(--mk-soc-green);
+}
+
 /* ── Decorative shapes (§03): drift low-opacity in margins; never over body/panels ─ */
 
 .mk-decor {

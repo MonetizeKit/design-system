@@ -6,9 +6,12 @@ import {
   Button,
   Card,
   ConsoleWindow,
+  Icon,
+  IconTile,
   Input,
   MonetizeKitThemeProvider,
   Section,
+  SocialIcon,
   StatCard,
   VerdictPill,
 } from "../src/index.js";
@@ -64,6 +67,51 @@ describe("Section", () => {
   });
 });
 
+describe("Icon", () => {
+  it("renders an inline stroked SVG from the brand registry (decorative by default)", () => {
+    const { container } = render(<Icon name="catalog" />);
+    const svg = container.querySelector("svg")!;
+    expect(svg.className.baseVal).toContain("mk-icon");
+    expect(svg.getAttribute("stroke")).toBe("currentColor");
+    expect(svg.getAttribute("aria-hidden")).toBe("true");
+    expect(svg.querySelectorAll("path").length).toBeGreaterThan(0);
+  });
+
+  it("becomes an img with a title", () => {
+    render(<Icon name="approvals" title="Approvals" />);
+    expect(screen.getByRole("img", { name: "Approvals" })).toBeTruthy();
+    // check-circle uses a circle node
+    expect(screen.getByRole("img").querySelector("circle")).toBeTruthy();
+  });
+});
+
+describe("IconTile", () => {
+  it("applies the canonical category color and the −12° tilt by default", () => {
+    render(<IconTile name="enforcement" />);
+    const tile = screen.getByRole("img", { name: "Enforcement" });
+    expect(tile.className).toContain("mk-icon-tile--violet");
+    expect(tile.className).toContain("tilt--12");
+    expect(tile.querySelector("svg.mk-icon")).toBeTruthy();
+  });
+
+  it("honors a category override", () => {
+    render(<IconTile name="usage" category="cyan" tilt="right" label="Usage tile" />);
+    const tile = screen.getByRole("img", { name: "Usage tile" });
+    expect(tile.className).toContain("mk-icon-tile--cyan");
+    expect(tile.className).toContain("tilt-12");
+  });
+});
+
+describe("SocialIcon", () => {
+  it("renders a soc-toned filled glyph link with an accessible name", () => {
+    render(<SocialIcon name="github" href="https://example.com" />);
+    const link = screen.getByRole("link", { name: "GitHub" });
+    expect(link.className).toContain("mk-social--yellow");
+    const svg = link.querySelector("svg")!;
+    expect(svg.getAttribute("fill")).toBe("currentColor");
+  });
+});
+
 describe("MonetizeKitThemeProvider", () => {
   it("resolves dark mode: data-theme=dark and inverted neutral vars", () => {
     const { container } = render(
@@ -96,6 +144,8 @@ describe("a11y (axe-core)", () => {
           <Card>
             <Badge tone="violet">audit</Badge>
             <VerdictPill verdict="ALLOW" />
+            <IconTile name="catalog" />
+            <SocialIcon name="github" href="https://example.com" />
             <StatCard label="calls" value="128,904" />
             <ConsoleWindow title="mk.check()">ok</ConsoleWindow>
             <Input aria-label="API key" />

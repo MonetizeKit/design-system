@@ -55,6 +55,8 @@ exports[`§12 dark mode — snapshots > snapshots the brand default DARK custom 
   --mk-peach: #F4BB92;
   --mk-pink: #EA336F;
   --mk-pink-wash: #FBE6EE;
+  --mk-purple: #4F46E5;
+  --mk-purple-d: #3730B5;
   --mk-purple-txt: #9A93FF;
   --mk-radius: 0;
   --mk-red: #E5322D;
@@ -64,6 +66,9 @@ exports[`§12 dark mode — snapshots > snapshots the brand default DARK custom 
   --mk-shadow-md: 6px 6px 0 0 #AFAD98;
   --mk-shadow-sm: 4px 4px 0 0 #AFAD98;
   --mk-signal-yellow: #FFD240;
+  --mk-soc-cyan: #02D9FF;
+  --mk-soc-green: #B6FFB6;
+  --mk-soc-yellow: #FFD240;
   --mk-stripe: #34324D;
   --mk-texture-dot-color: #CBAE4E;
   --mk-texture-dot-color-soft: rgba(255, 254, 243, 0.09);

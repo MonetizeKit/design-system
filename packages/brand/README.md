@@ -39,11 +39,19 @@ import "@monetizekit/brand/primitives.css"; // verdict pill, console window, sta
   focus, grey disabled). §12 dark is inherited from `design-tokens/css`: hard-shadow utilities use
   the mode-aware `shade` var (dimmed in dark), and `.on-color` keeps saturated islands light.
 - **`primitives.css`** — `.mk-verdict--{allow,deny,require-top-up,degrade,recorded}`,
-  `.mk-console`, `.mk-statcard`, `.mk-decor--{circle,square,triangle}` (§01/§10).
+  `.mk-console`, `.mk-statcard`, `.mk-decor--{circle,square,triangle}`, `.mk-icon`,
+  `.mk-icon-tile--{orange,violet,pink,green,cyan,yellow,mint,peach}`, and
+  `.mk-social--{cyan,yellow,green}` (§01/§07/§08/§10/footer).
+- **Iconography** (`icons.ts` / `social.ts`) — the canonical line-icon set (catalog, enforcement,
+  credits, usage, metering, approvals, workflows, experiments, contracts, code, shield) with
+  per-icon category + label (`ICON_META`), and the Twitter/X · GitHub · LinkedIn social glyphs.
+  Glyph geometry is the single source of truth: both the standalone `assets/icons/glyphs/*.svg` /
+  `assets/social/*.svg` and the React `Icon` render from it.
 - **Media asset system** (`@monetizekit/brand/assets/*`) — logo/mark SVG sources (upright + tilted
   −12° badge, wordmark, monochrome), maskable + pinned-tab icons, rasterized favicon/apple/PWA PNGs,
-  and a default OG image. A typed manifest (`ASSETS`, also `dist/assets.json`) is the single source
-  of truth so consumers reference paths, not copies.
+  the generated icon/social glyph SVGs, and a default OG image. A typed manifest (`ASSETS`, also
+  `dist/assets.json`) is the single source of truth so consumers reference paths, not copies.
+- **`guidelines/`** — the v0.8 brand board (`brand-board-v0.8.html`) as living documentation.
 - **OG template** — `ogTemplate()` + `OG_SIZE` produce a satori/`ImageResponse`-compatible 1200×630
   card in lockstep with the tokens, for per-route social images.
 

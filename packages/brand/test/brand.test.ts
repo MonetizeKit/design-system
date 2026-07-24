@@ -6,12 +6,21 @@ import {
   ASSETS,
   ASSET_BASE,
   CATEGORY_LINE,
+  GLYPH_ICON_ASSETS,
   ICON_ASSETS,
+  ICON_GLYPHS,
+  ICON_META,
+  ICON_NAMES,
   LOGO_ASSETS,
   OG_SIZE,
   RASTER_ICONS,
+  SATURATED_CATEGORIES,
+  SOCIAL_GLYPHS,
+  SOCIAL_ICON_ASSETS,
+  SOCIAL_NAMES,
   VERDICTS,
   assetImport,
+  glyphToSvgChildren,
   ogTemplate,
   verdictClass,
 } from "../src/index.js";
@@ -76,11 +85,46 @@ describe("asset manifest", () => {
     expect(RASTER_ICONS.some((a) => a.path === "icons/apple-touch-icon.png")).toBe(true);
   });
 
-  it("every SVG source referenced by the manifest exists on disk", () => {
+  it("every SVG referenced by the manifest exists on disk (authored source or generated dist)", () => {
     for (const a of ASSETS) {
       if (a.type !== "image/svg+xml") continue;
-      expect(existsSync(resolve(pkgDir, "assets", a.path)), `missing ${a.path}`).toBe(true);
+      const inSource = existsSync(resolve(pkgDir, "assets", a.path));
+      const inDist = existsSync(resolve(pkgDir, "dist", "assets", a.path));
+      expect(inSource || inDist, `missing ${a.path}`).toBe(true);
     }
+  });
+});
+
+describe("icon + social registry (§07/§08/footer)", () => {
+  it("exposes every board line icon with non-empty geometry and a valid category", () => {
+    expect(ICON_NAMES.length).toBeGreaterThanOrEqual(11);
+    for (const name of ICON_NAMES) {
+      expect(ICON_GLYPHS[name].length).toBeGreaterThan(0);
+      expect(ICON_META[name].label.length).toBeGreaterThan(0);
+    }
+    // Every saturated category is a real brand color name; the set is non-empty.
+    expect(SATURATED_CATEGORIES).toContain("violet");
+  });
+
+  it("serializes glyph nodes to inner SVG markup (path/circle/rect)", () => {
+    expect(glyphToSvgChildren(ICON_GLYPHS.catalog)).toContain("<path");
+    expect(glyphToSvgChildren(ICON_GLYPHS.credits)).toContain("<circle");
+    expect(glyphToSvgChildren(ICON_GLYPHS.workflows)).toContain("<rect");
+  });
+
+  it("exposes the three social glyphs with fill path data", () => {
+    expect(SOCIAL_NAMES).toEqual(["twitter", "github", "linkedin"]);
+    for (const name of SOCIAL_NAMES) {
+      expect(SOCIAL_GLYPHS[name].startsWith("M")).toBe(true);
+    }
+  });
+
+  it("manifest lists one asset per icon and per social glyph", () => {
+    expect(GLYPH_ICON_ASSETS.length).toBe(ICON_NAMES.length);
+    expect(SOCIAL_ICON_ASSETS.length).toBe(SOCIAL_NAMES.length);
+    const catalog = GLYPH_ICON_ASSETS.find((a) => a.path.endsWith("catalog.svg"));
+    expect(catalog).toBeDefined();
+    expect(assetImport(catalog!)).toBe(`${ASSET_BASE}/icons/glyphs/catalog.svg`);
   });
 });
 
@@ -115,6 +159,18 @@ describe("built artifacts", () => {
       const p = resolve(dist, "assets", rel);
       expect(existsSync(p), `missing ${rel}`).toBe(true);
       expect(statSync(p).size).toBeGreaterThan(100);
+    }
+  });
+  it("generates a currentColor line-icon SVG per glyph and a fill SVG per social glyph", () => {
+    for (const name of ICON_NAMES) {
+      const p = resolve(dist, "assets", "icons/glyphs", `${name}.svg`);
+      expect(existsSync(p), `missing glyph ${name}`).toBe(true);
+      expect(readFileSync(p, "utf8")).toContain('stroke="currentColor"');
+    }
+    for (const name of SOCIAL_NAMES) {
+      const p = resolve(dist, "assets", "social", `${name}.svg`);
+      expect(existsSync(p), `missing social ${name}`).toBe(true);
+      expect(readFileSync(p, "utf8")).toContain('fill="currentColor"');
     }
   });
 });

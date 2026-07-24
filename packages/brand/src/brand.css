@@ -160,6 +160,16 @@
     transparent 12px
   );
 }
+/* White diagonal stripe for saturated grounds (orange/action) — a light-alpha overlay (§03). */
+.tex-stripe-o {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.14) 0,
+    rgba(255, 255, 255, 0.14) 5px,
+    transparent 5px,
+    transparent 13px
+  );
+}
 
 /* ── §04 Tilt — small objects ±12° alternating; panels −2°…+2°; hover straightens ─ */
 
@@ -206,5 +216,69 @@
   .tilt-panel,
   .tilt-panel-max {
     transition: none;
+  }
+}
+
+/* ── §01 Blinking caret — the console prompt cursor ──────────────────────── */
+
+.mk-caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  vertical-align: -0.15em;
+  margin-left: 2px;
+  background: var(--mk-action);
+  animation: mk-blink 1.1s step-end infinite;
+}
+@keyframes mk-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── §03 Decor float — outlined geometry drifting slowly in section margins ─── */
+
+.mk-float-a {
+  animation: mk-float-a 9s ease-in-out infinite;
+}
+.mk-float-b {
+  animation: mk-float-b 11s ease-in-out infinite;
+}
+.mk-float-c {
+  animation: mk-float-c 13s ease-in-out infinite;
+}
+@keyframes mk-float-a {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-16px) rotate(10deg);
+  }
+}
+@keyframes mk-float-b {
+  0%,
+  100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-13px) rotate(0);
+  }
+}
+@keyframes mk-float-c {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mk-caret,
+  .mk-float-a,
+  .mk-float-b,
+  .mk-float-c {
+    animation: none;
   }
 }
