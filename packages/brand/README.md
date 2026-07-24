@@ -48,7 +48,9 @@ import "@monetizekit/brand/primitives.css"; // verdict pill, console window, sta
   Glyph geometry is the single source of truth: both the standalone `assets/icons/glyphs/*.svg` /
   `assets/social/*.svg` and the React `Icon` render from it.
 - **Media asset system** (`@monetizekit/brand/assets/*`) — logo/mark SVG sources (upright + tilted
-  −12° badge, wordmark, monochrome), maskable + pinned-tab icons, rasterized favicon/apple/PWA PNGs,
+  −12° badge, wordmark, monochrome). The mark is the literal **"MK"** set in Inter Black (900),
+  outlined to a fill path so it renders identically in every surface regardless of installed fonts;
+  it is never a geometric monogram. Also: maskable + pinned-tab icons, rasterized favicon/apple/PWA PNGs,
   the generated icon/social glyph SVGs, and a default OG image. A typed manifest (`ASSETS`, also
   `dist/assets.json`) is the single source of truth so consumers reference paths, not copies.
 - **`guidelines/`** — the v0.8 brand board (`brand-board-v0.8.html`) as living documentation.

@@ -128,6 +128,32 @@ describe("icon + social registry (§07/§08/footer)", () => {
   });
 });
 
+describe("brand mark fidelity (§01 — literal 'MK' in Inter Black, never a geometric monogram)", () => {
+  const logo = (name: string) => readFileSync(resolve(pkgDir, "assets", "logo", name), "utf8");
+
+  it("renders the badge mark as a filled outline path (not the retired stroked monogram)", () => {
+    for (const name of ["icon.svg", "mk-badge.svg", "mk-badge-tilted.svg", "wordmark.svg"]) {
+      const svg = logo(name);
+      expect(svg, `${name} should carry a fill path`).toContain('fill="#1A1A1A"');
+      expect(svg, `${name} must not reuse the retired monogram`).not.toContain("M110 350");
+    }
+  });
+
+  it("keeps the orange square + ink edge structure on the primary badge", () => {
+    const icon = logo("icon.svg");
+    expect(icon).toContain('fill="#ED7445"');
+    expect(icon).toContain('stroke="#1A1A1A"');
+  });
+
+  it("shows the 'MK' letters inside the OG badge", () => {
+    const node = ogTemplate();
+    const children = node.props.children as Array<{ props: { children: unknown } }>;
+    const badge = children[0];
+    const mk = badge.props.children as { props: { children: unknown } };
+    expect(mk.props.children).toBe("MK");
+  });
+});
+
 describe("ogTemplate", () => {
   it("produces a 1200×630 satori-compatible node with the title + category line", () => {
     expect(OG_SIZE).toEqual({ width: 1200, height: 630 });
