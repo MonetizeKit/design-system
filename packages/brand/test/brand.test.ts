@@ -149,7 +149,8 @@ describe("brand mark fidelity (§01 — literal 'MK' in Inter Black, never a geo
     const node = ogTemplate();
     const children = node.props.children as Array<{ props: { children: unknown } }>;
     const badge = children[0];
-    const mk = badge.props.children as { props: { children: unknown } };
+    expect(badge).toBeDefined();
+    const mk = badge!.props.children as { props: { children: unknown } };
     expect(mk.props.children).toBe("MK");
   });
 });
