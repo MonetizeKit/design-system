@@ -32,7 +32,7 @@ export const MonetizeKitBadge = forwardRef<SVGSVGElement, BrandMarkProps>(functi
       <g transform={tilt ? "rotate(-12 256 256)" : undefined}>
         {shadow ? <rect x={40} y={40} width={456} height={456} fill={INK} /> : null}
         <rect x={16} y={16} width={480} height={480} fill={ORANGE} stroke={INK} strokeWidth={24} />
-        <g fill={INK} transform="translate(119.018 313.284) scale(0.157)">
+        <g fill={INK} transform="translate(77.924 330.469) scale(0.205)">
           <path d={MK_PATH} />
         </g>
       </g>
@@ -52,7 +52,7 @@ export const MonetizeKitWordmark = forwardRef<SVGSVGElement, WordmarkProps>(func
   return (
     <svg ref={ref} viewBox="0 0 994 200" width={width} height={height} role="img" aria-label={title} {...rest}>
       <rect x={12} y={12} width={176} height={176} fill={ORANGE} stroke={INK} strokeWidth={12} />
-      <g fill={INK} transform="translate(51.803 120.155) scale(0.055)">
+      <g fill={INK} transform="translate(37.344 126.202) scale(0.072)">
         <path d={MK_PATH} />
       </g>
       <g fill={INK} transform="translate(209.837 150.716) scale(0.877)">

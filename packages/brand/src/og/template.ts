@@ -73,7 +73,7 @@ export function ogTemplate(props: OgTemplateProps = {}): OgNode {
           boxShadow: `18px 18px 0 0 ${ink}`,
         },
         children: node("div", {
-          style: { fontSize: "76px", fontWeight: 900, letterSpacing: "-2px", color: ink, lineHeight: 1 },
+          style: { fontSize: "94px", fontWeight: 900, letterSpacing: "-3px", color: ink, lineHeight: 1 },
           children: "MK",
         }),
       }),
