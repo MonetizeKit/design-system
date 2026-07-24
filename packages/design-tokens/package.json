@@ -1,6 +1,6 @@
 {
   "name": "@monetizekit/design-tokens",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Framework-agnostic MonetizeKit design tokens (Brand Direction v0.8, incl. §12 dark mode) — the single source of truth, with a theme × palette × mode resolver and build artifacts for JS/TS, CSS, Tailwind, and the SDK --mk-* contract.",
   "license": "MIT",
   "repository": {
