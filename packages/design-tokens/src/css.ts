@@ -1,4 +1,5 @@
-import type { BrandTokens, ResolvedTokens, SemanticColors } from "./types.js";
+import { brandShadow } from "./brand.js";
+import type { BrandTokens, OnColorTokens, ResolvedTokens, SemanticColors } from "./types.js";
 
 /** Brand ramp / structure tokens as `--mk-*` custom properties (palette-independent). */
 export function brandCssVars(brand: BrandTokens): Record<string, string> {
@@ -39,6 +40,32 @@ export function semanticCssVars(semantic: SemanticColors): Record<string, string
     vars[`--${name}`] = value;
   }
   return vars;
+}
+
+/**
+ * The `.on-color` light-island re-pin as `--mk-*` custom properties (§12). Emitted inside a
+ * `.on-color` block so saturated grounds and small saturated objects keep the fixed light
+ * neutrals — black edge + black hard shadow — regardless of page mode. Also re-pins the
+ * precomputed shadow strings to `shade` (`#1A1A1A`) so islands never inherit the dimmed dark shade.
+ */
+export function onColorCssVars(onColor: OnColorTokens): Record<string, string> {
+  const shadow = brandShadow(onColor.shade);
+  return {
+    "--mk-cream": onColor.cream,
+    "--mk-paper": onColor.paper,
+    "--mk-ink": onColor.ink,
+    "--mk-shade": onColor.shade,
+    "--mk-muted": onColor.muted,
+    "--mk-faint": onColor.faint,
+    "--mk-line-soft": onColor["line-soft"],
+    "--mk-dotsoft": onColor.dotsoft,
+    "--mk-texture-dot-color-soft": onColor.dotsoft,
+    "--mk-violet-txt": onColor["violet-txt"],
+    "--mk-purple-txt": onColor["purple-txt"],
+    "--mk-shadow-sm": shadow.sm,
+    "--mk-shadow-md": shadow.md,
+    "--mk-shadow-lg": shadow.lg,
+  };
 }
 
 /**

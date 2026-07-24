@@ -14,7 +14,7 @@ exports[`CSS serialization > snapshots the SDK mk-contract for light and dark 1`
   --mk-primary: #FF6B35;
   --mk-primary-fg: #1A1A1A;
   --mk-radius: 0;
-  --mk-shadow: 4px 4px 0 0 #1A1A1A;
+  --mk-shadow: 4px 4px 0 0 #AFAD98;
   --mk-success: #16A34A;
   --mk-warning: #F8D45D;",
   "light": "  --mk-accent: #62D6FA;
@@ -54,9 +54,11 @@ exports[`CSS serialization > snapshots the brand default light custom properties
   --mk-cyan: #62D6FA;
   --mk-cyan-wash: #DAF4FD;
   --mk-display-weight: 900;
+  --mk-dotsoft: rgba(26, 26, 26, 0.07);
   --mk-faint: #8C8C83;
   --mk-font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
   --mk-font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --mk-footer-bg: #1A1A1A;
   --mk-green: #16A34A;
   --mk-ink: #1A1A1A;
   --mk-lavender: #E6E6F8;
@@ -65,18 +67,22 @@ exports[`CSS serialization > snapshots the brand default light custom properties
   --mk-mint: #C5FDBC;
   --mk-mint-wash: #DCFBE6;
   --mk-muted: #5C5C55;
+  --mk-onlight: #1A1A1A;
   --mk-orange: #FF6B35;
   --mk-paper: #FFFFFF;
   --mk-peach: #F4BB92;
   --mk-pink: #EA336F;
   --mk-pink-wash: #FBE6EE;
+  --mk-purple-txt: #4F46E5;
   --mk-radius: 0;
   --mk-red: #E5322D;
   --mk-red-wash: #FBE6E5;
+  --mk-shade: #1A1A1A;
   --mk-shadow-lg: 9px 9px 0 0 #1A1A1A;
   --mk-shadow-md: 6px 6px 0 0 #1A1A1A;
   --mk-shadow-sm: 4px 4px 0 0 #1A1A1A;
   --mk-signal-yellow: #FFD240;
+  --mk-stripe: #D1D1E2;
   --mk-texture-dot-color: #CBAE4E;
   --mk-texture-dot-color-soft: rgba(26, 26, 26, 0.07);
   --mk-texture-dot-size: 2.4px;
@@ -88,6 +94,7 @@ exports[`CSS serialization > snapshots the brand default light custom properties
   --mk-tracking-display: -0.03em;
   --mk-tracking-label: 0.08em;
   --mk-violet: #932CE7;
+  --mk-violet-txt: #932CE7;
   --mk-yellow: #F8D45D;
   --mk-yellow-wash: #FDF1D2;
   --muted: #EFEEE1;

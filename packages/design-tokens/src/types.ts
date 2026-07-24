@@ -75,17 +75,31 @@ export interface PaletteVariants {
   dark: Partial<SemanticColors>;
 }
 
-/** Brand color ramp — the frozen Brand Direction v0.7 palette. */
+/** Brand color ramp — the frozen Brand Direction v0.8 palette. */
 export interface BrandColors {
   cream: string;
   paper: string;
   ink: string;
+  /**
+   * Hard-shadow color — mode-aware and **distinct from `ink`** (§12). Light `#1A1A1A`;
+   * dark `#AFAD98` (dimmed so the lit cream edge still reads brighter than its shadow).
+   * All shadow output references `shade`, never `ink`.
+   */
+  shade: string;
+  /** Fixed on-light neutral (`#1A1A1A`) that **never inverts** — text/edges on saturated fills. */
+  onlight: string;
   orange: string;
   action: string;
   violet: string;
+  /** Accent violet text — lifts to `#BB86FC` in dark so code tokens stay legible (§12). */
+  "violet-txt": string;
+  /** Accent purple text — lifts to `#9A93FF` in dark (§12). */
+  "purple-txt": string;
   pink: string;
   yellow: string;
   lavender: string;
+  /** Stripe-texture line color (mode-aware). */
+  stripe: string;
   cyan: string;
   mint: string;
   peach: string;
@@ -93,6 +107,10 @@ export interface BrandColors {
   muted: string;
   faint: string;
   "line-soft": string;
+  /** Footer ground — deeper than the page ground (mode-aware). */
+  "footer-bg": string;
+  /** Soft dot-texture color (mode-aware). */
+  dotsoft: string;
   green: string;
   red: string;
   /** Verdict-pill washes. */
@@ -102,6 +120,27 @@ export interface BrandColors {
   "yellow-wash": string;
   "cyan-wash": string;
   "red-wash": string;
+}
+
+/**
+ * The non-inverting `.on-color` "light island" set (§12). Saturated brand grounds (orange,
+ * yellow) and small saturated objects do **not** invert in dark mode; they re-pin these neutrals
+ * locally to their fixed light values (identical in both modes) and set text to `onlight`, so a
+ * yellow/orange section keeps a black edge + black text on a dark page.
+ */
+export interface OnColorTokens {
+  cream: string;
+  paper: string;
+  ink: string;
+  shade: string;
+  muted: string;
+  faint: string;
+  "line-soft": string;
+  dotsoft: string;
+  "violet-txt": string;
+  "purple-txt": string;
+  /** Text color for saturated fills — the fixed `onlight` (`#1A1A1A`). */
+  text: string;
 }
 
 export interface BrandTypography {
@@ -169,6 +208,12 @@ export interface ResolvedTokens {
   mode: Mode;
   /** The concrete mode this resolved to (`system` collapsed via `prefersDark`). */
   resolvedMode: ResolvedMode;
+  /** Brand identity resolved for `resolvedMode` (neutrals inverted + `shade` dimmed in dark). */
   brand: BrandTokens;
+  /**
+   * The fixed `.on-color` light-island neutral set — identical in both modes, for saturated
+   * fills that must not invert (§12).
+   */
+  onColor: OnColorTokens;
   semantic: SemanticColors;
 }

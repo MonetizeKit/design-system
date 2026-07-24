@@ -7,6 +7,7 @@ export type {
   SemanticColors,
   PaletteVariants,
   BrandColors,
+  OnColorTokens,
   BrandTypography,
   BrandShadowScale,
   BrandBorderWidths,
@@ -18,13 +19,22 @@ export type {
   ResolvedTokens,
 } from "./types.js";
 
-export { BRAND } from "./brand.js";
+export {
+  BRAND,
+  BRAND_NEUTRALS_LIGHT,
+  BRAND_NEUTRALS_DARK,
+  ON_COLOR,
+  brandShadow,
+  resolveBrand,
+  resolveBrandColors,
+} from "./brand.js";
 export { PALETTES, PALETTE_NAMES, BRAND_SEMANTIC_BASE } from "./palettes.js";
 export { resolveTokens, resolveMode } from "./resolve.js";
 export {
   tokensToCssVars,
   brandCssVars,
   semanticCssVars,
+  onColorCssVars,
   mkContractVars,
   cssVarsToDeclarations,
 } from "./css.js";
