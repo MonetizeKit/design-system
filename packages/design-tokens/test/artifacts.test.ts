@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   cssVarsToDeclarations,
   mkContractVars,
+  paletteModeSelector,
   resolveTokens,
   semanticCssVars,
   tokensToCssVars,
@@ -30,5 +31,22 @@ describe("CSS serialization", () => {
       expect(key.startsWith("--")).toBe(true);
       expect(value.length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe("paletteModeSelector — centralized dark contract", () => {
+  it("emits :root for default light and the plain attribute for palette light", () => {
+    expect(paletteModeSelector("default", "light")).toBe(":root");
+    expect(paletteModeSelector("nord", "light")).toBe('[data-palette="nord"]');
+  });
+
+  it("emits BOTH [data-theme=dark] and the .dark class alias for default dark", () => {
+    expect(paletteModeSelector("default", "dark")).toBe('[data-theme="dark"], .dark');
+  });
+
+  it("composes the palette with both the attribute and the .dark class in dark", () => {
+    expect(paletteModeSelector("dracula", "dark")).toBe(
+      '[data-palette="dracula"][data-theme="dark"], [data-palette="dracula"].dark',
+    );
   });
 });

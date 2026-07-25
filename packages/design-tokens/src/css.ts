@@ -1,5 +1,34 @@
 import { brandShadow } from "./brand.js";
-import type { BrandTokens, OnColorTokens, ResolvedTokens, SemanticColors } from "./types.js";
+import type {
+  BrandTokens,
+  OnColorTokens,
+  PaletteName,
+  ResolvedMode,
+  ResolvedTokens,
+  SemanticColors,
+} from "./types.js";
+
+/**
+ * The CSS selector a `palette × mode` block is emitted under in `tokens.css`.
+ *
+ * Dark is emitted under BOTH the `[data-theme="dark"]` attribute AND the `.dark` class alias, so a
+ * consumer can drive dark mode with either strategy and still get the complete brand dark contract:
+ *   - `[data-theme="dark"]` — the attribute the SDK/brand cascade keys on.
+ *   - `.dark` — the class Tailwind's `dark:` variant and `next-themes`' class strategy key on.
+ *
+ * Emitting both centralizes what consumers previously had to hand-mirror per app (the reused
+ * shadcn content chrome only repainted reliably on a `.dark` class toggle, not on the attribute
+ * alone). Palettes compose with each: `[data-palette="x"][data-theme="dark"], [data-palette="x"].dark`.
+ */
+export function paletteModeSelector(palette: PaletteName, mode: ResolvedMode): string {
+  const isDefault = palette === "default";
+  if (mode === "light") {
+    return isDefault ? ":root" : `[data-palette="${palette}"]`;
+  }
+  return isDefault
+    ? '[data-theme="dark"], .dark'
+    : `[data-palette="${palette}"][data-theme="dark"], [data-palette="${palette}"].dark`;
+}
 
 /** Brand ramp / structure tokens as `--mk-*` custom properties (palette-independent). */
 export function brandCssVars(brand: BrandTokens): Record<string, string> {
