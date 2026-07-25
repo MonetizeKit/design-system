@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 import { forwardRef } from "react";
 import { cn } from "./cn.js";
 
-export interface ProseProps extends HTMLAttributes<HTMLDivElement> {}
+export type ProseProps = HTMLAttributes<HTMLDivElement>;
 
 /**
  * Long-form documentation prose scale (§13e): applies the brand type rhythm to headings,
