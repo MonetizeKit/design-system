@@ -49,8 +49,8 @@ export const DEFAULT_FOOTER_COLUMNS: FooterColumn[] = [
   {
     heading: "Resources",
     links: [
-      { label: "Documentation", href: "https://docs.monetizekit.app", external: true },
-      { label: "API Reference", href: "https://docs.monetizekit.app/api-reference", external: true },
+      { label: "Documentation", href: "https://learning.monetizekit.app/docs", external: true },
+      { label: "API Reference", href: "https://learning.monetizekit.app/docs/api-reference", external: true },
       { label: "Component Gallery", href: "https://ui.monetizekit.app", external: true },
       { label: "Comparisons", href: "https://www.monetizekit.app/blog" },
       { label: "About", href: "https://www.monetizekit.app/about" },
@@ -63,7 +63,7 @@ export const DEFAULT_FOOTER_COLUMNS: FooterColumn[] = [
 
 /** The canonical social tiles (§footer): Twitter/X (cyan), GitHub (yellow), LinkedIn (green). */
 export const DEFAULT_FOOTER_SOCIAL: FooterSocial[] = [
-  { name: "twitter", href: "https://twitter.com/monetizekit" },
+  { name: "twitter", href: "https://x.com/monetizekit" },
   { name: "github", href: "https://github.com/MonetizeKit" },
   { name: "linkedin", href: "https://www.linkedin.com/company/monetizekit" },
 ];
