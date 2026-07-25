@@ -1,5 +1,11 @@
 # @monetizekit/ui-react
 
+## 0.3.1
+
+### Patch Changes
+
+- 145c08d: `BrandFooter`: point the default Documentation / API Reference links at the live docs host (`learning.monetizekit.app`) and use the canonical `x.com` handle for the Twitter/X social tile.
+
 ## 0.3.0
 
 ### Minor Changes
