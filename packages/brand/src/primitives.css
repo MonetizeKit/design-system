@@ -319,6 +319,9 @@
   }
 }
 .mk-doc-header__heading {
+  /* Take the leftover row space and shrink text normally (not one-word-per-line) when a wide
+   * action cluster shares the row. */
+  flex: 1 1 auto;
   min-width: 0;
 }
 .mk-doc-header__title {
@@ -342,8 +345,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.5rem;
-  flex-shrink: 0;
+  /* Shrinkable so a busy action cluster wraps onto its own lines instead of squeezing the title. */
+  flex: 0 1 auto;
 }
 
 /* ── Console window (§01): a tilted-slightly panel with a title bar + dots ───── */
