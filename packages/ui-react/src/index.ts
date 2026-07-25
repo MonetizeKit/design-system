@@ -42,6 +42,20 @@ export { SocialIcon } from "./components/SocialIcon.js";
 export type { SocialIconProps } from "./components/SocialIcon.js";
 export { MonetizeKitBadge, MonetizeKitWordmark } from "./components/BrandMark.js";
 export type { BrandMarkProps, WordmarkProps } from "./components/BrandMark.js";
+export {
+  BrandFooter,
+  DEFAULT_FOOTER_COLUMNS,
+  DEFAULT_FOOTER_SOCIAL,
+  DEFAULT_FOOTER_LEGAL_LINKS,
+  DEFAULT_FOOTER_TAGLINE,
+} from "./components/BrandFooter.js";
+export type {
+  BrandFooterProps,
+  FooterLink,
+  FooterColumn,
+  FooterSocial,
+  FooterEndorsement,
+} from "./components/BrandFooter.js";
 export { Callout } from "./components/Callout.js";
 export type { CalloutProps } from "./components/Callout.js";
 export { MethodBadge } from "./components/MethodBadge.js";
