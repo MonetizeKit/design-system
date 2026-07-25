@@ -37,3 +37,25 @@ pnpm lint       # lint all packages
 ```
 
 Releases are published to npm from CI via [changesets](https://github.com/changesets/changesets).
+
+## Storybook hosting (Surface E — primitive gallery)
+
+The `@monetizekit/ui-react` Storybook is the internal **primitive gallery** and is hosted on Vercel at
+**[`internal-ui.monetizekit.app`](https://internal-ui.monetizekit.app)**.
+
+- **Vercel project:** `app.monetizekit.internal-ui`, Git-linked to this repo.
+- **Build:** driven by the root [`vercel.json`](vercel.json) —
+  `pnpm turbo run build-storybook --filter=@monetizekit/ui-react` → `packages/ui-react/storybook-static`.
+  The `build-storybook` turbo task `dependsOn: ["^build"]`, so `@monetizekit/design-tokens` and
+  `@monetizekit/brand` are built before the gallery.
+- **Promotion pattern (same as every other surface):** push to `development` / `delivery` → Vercel
+  preview deploys; push to `main` (the production branch) → production deploy on
+  `internal-ui.monetizekit.app`. DNS is Vercel-managed for `monetizekit.app`, so the subdomain record is
+  created and verified automatically.
+- **Access model:** public, matching the public SDK gallery at `ui.monetizekit.app`. If the gallery
+  should be restricted to the team, enable **Vercel Authentication** (or a shared password) on the
+  `app.monetizekit.internal-ui` project — no code changes required.
+
+> The public `@monetizekit/react` **SDK** Storybook (component usage for customers) lives in the
+> `react` repo and deploys to `ui.monetizekit.app`; this `ui-react` gallery is the internal
+> primitive/design-language reference.
