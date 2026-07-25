@@ -46,3 +46,7 @@ export { Callout } from "./components/Callout.js";
 export type { CalloutProps } from "./components/Callout.js";
 export { MethodBadge } from "./components/MethodBadge.js";
 export type { MethodBadgeProps } from "./components/MethodBadge.js";
+export { Prose } from "./components/Prose.js";
+export type { ProseProps } from "./components/Prose.js";
+// Interactive (client-only) components live in the "./client" entry so this root stays RSC-safe:
+//   import { DocCodeBlock } from "@monetizekit/ui-react/client";

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Callout } from "./Callout.js";
 import { MethodBadge } from "./MethodBadge.js";
+import { DocCodeBlock } from "./DocCodeBlock.js";
+import { Prose } from "./Prose.js";
 import type { HttpMethod } from "../contract.js";
 
 /**
@@ -38,4 +40,46 @@ export const MethodBadges: Story = {
       </div>
     );
   },
+};
+
+export const CodeBlockSingle: Story = {
+  render: () => (
+    <div style={{ maxWidth: 640 }}>
+      <DocCodeBlock
+        language="bash"
+        showLineNumbers
+        code={"curl https://api.monetizekit.com/v1/entitlements \\\n  -H 'Authorization: Bearer mk_live_…'"}
+      />
+    </div>
+  ),
+};
+
+export const CodeBlockTabbed: Story = {
+  render: () => (
+    <div style={{ maxWidth: 640 }}>
+      <DocCodeBlock
+        tabs={[
+          { label: "Node", language: "javascript", code: "const mk = new MonetizeKit(key);\nawait mk.entitlements.check('seat');" },
+          { label: "Python", language: "python", code: "mk = MonetizeKit(key)\nmk.entitlements.check('seat')" },
+          { label: "cURL", language: "bash", code: "curl .../v1/entitlements/seat -H 'Authorization: Bearer …'" },
+        ]}
+      />
+    </div>
+  ),
+};
+
+export const ProseScale: Story = {
+  render: () => (
+    <Prose style={{ maxWidth: 640 }}>
+      <h2>Entitlements</h2>
+      <p>
+        An <a href="#">entitlement</a> is a computed access decision for a customer and feature. Branch
+        on the <code>verdict</code>, not the raw HTTP status.
+      </p>
+      <ul>
+        <li>Boolean features gate on/off access.</li>
+        <li>Metered features debit a balance.</li>
+      </ul>
+    </Prose>
+  ),
 };

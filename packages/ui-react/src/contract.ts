@@ -84,3 +84,13 @@ export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 export interface MethodContract {
   method: HttpMethod;
 }
+
+/** A single tab in a documentation code block (§13d). */
+export interface DocCodeTab {
+  /** Tab label (e.g. "cURL", "Node", "Python"); also used as the language chip when untabbed. */
+  label: string;
+  /** Source to render (and copy). */
+  code: string;
+  /** Language hint for the corner chip / aria label. */
+  language?: string;
+}

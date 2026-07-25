@@ -132,6 +132,175 @@
   color: var(--mk-cream);
 }
 
+/* ── Doc code block (docs §13d): edged panel, tab/lang bar, copy, line numbers ─ */
+
+.mk-doccode {
+  background: var(--mk-paper);
+  color: var(--mk-ink);
+  border: var(--mk-border-panel) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+  box-shadow: var(--mk-shadow-sm);
+  overflow: hidden;
+  font-family: var(--mk-font-mono);
+  margin: 1.125rem 0;
+}
+.mk-doccode__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem 0.375rem 0.75rem;
+  background: var(--mk-cream);
+  border-bottom: var(--mk-border-panel) solid var(--mk-ink);
+}
+.mk-doccode__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.mk-doccode__tab {
+  font-family: var(--mk-font-mono);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  color: var(--mk-muted);
+  background: transparent;
+  border: var(--mk-border-chip) solid transparent;
+  border-radius: var(--mk-radius);
+  cursor: pointer;
+}
+.mk-doccode__tab:hover {
+  color: var(--mk-ink);
+}
+.mk-doccode__tab--active {
+  color: var(--mk-ink);
+  background: var(--mk-paper);
+  border-color: var(--mk-ink);
+}
+.mk-doccode__lang {
+  font-family: var(--mk-font-mono);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mk-muted);
+}
+.mk-doccode__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4ch;
+  flex: 0 0 auto;
+  font-family: var(--mk-font-mono);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  color: var(--mk-ink);
+  background: var(--mk-paper);
+  border: var(--mk-border-chip) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+  cursor: pointer;
+}
+.mk-doccode__copy:hover {
+  background: var(--mk-lavender-wash);
+}
+.mk-doccode__pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 0.75rem 0.875rem;
+  font-family: var(--mk-font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--mk-ink);
+}
+.mk-doccode__line {
+  display: block;
+  white-space: pre;
+}
+.mk-doccode__ln {
+  display: inline-block;
+  width: 2rem;
+  margin-right: 0.75rem;
+  text-align: right;
+  user-select: none;
+  color: var(--mk-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Prose scale (docs §13e): long-form body rhythm on the brand type + tokens ── */
+
+.mk-prose {
+  color: var(--mk-ink);
+  font-family: var(--mk-font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.mk-prose h1,
+.mk-prose h2,
+.mk-prose h3,
+.mk-prose h4 {
+  font-family: var(--mk-font-sans);
+  font-weight: var(--mk-display-weight);
+  letter-spacing: var(--mk-tracking-display);
+  color: var(--mk-ink);
+  line-height: 1.2;
+}
+.mk-prose h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+}
+.mk-prose h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 0.75rem;
+}
+.mk-prose h3 {
+  font-size: 1.1875rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.mk-prose p {
+  margin: 0 0 1rem;
+}
+.mk-prose a {
+  color: var(--mk-violet-txt);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.mk-prose strong {
+  font-weight: 700;
+}
+.mk-prose ul,
+.mk-prose ol {
+  margin: 0 0 1rem;
+  padding-left: 1.5rem;
+}
+.mk-prose li {
+  margin: 0.25rem 0;
+}
+.mk-prose code {
+  font-family: var(--mk-font-mono);
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  color: var(--mk-ink);
+  background: var(--mk-lavender-wash);
+  border: var(--mk-border-chip) solid var(--mk-line-soft);
+  border-radius: var(--mk-radius);
+}
+.mk-prose blockquote {
+  margin: 0 0 1rem;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: var(--mk-border-panel) solid var(--mk-ink);
+  color: var(--mk-muted);
+}
+.mk-prose hr {
+  border: none;
+  border-top: var(--mk-border-chip) solid var(--mk-line-soft);
+  margin: 2rem 0;
+}
+
 /* ── Console window (§01): a tilted-slightly panel with a title bar + dots ───── */
 
 .mk-console {

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import axe from "axe-core";
 import { afterEach, describe, expect, it } from "vitest";
 import {
@@ -12,11 +12,13 @@ import {
   Input,
   MethodBadge,
   MonetizeKitThemeProvider,
+  Prose,
   Section,
   SocialIcon,
   StatCard,
   VerdictPill,
 } from "../src/index.js";
+import { DocCodeBlock } from "../src/client.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -134,6 +136,45 @@ describe("MethodBadge", () => {
     const el = screen.getByText("DELETE");
     expect(el.className).toContain("mk-method");
     expect(el.className).toContain("mk-method--delete");
+  });
+});
+
+describe("DocCodeBlock", () => {
+  it("single-snippet form shows the language chip, the code, and a copy control", () => {
+    render(<DocCodeBlock language="bash" code={"echo hi\necho bye"} showLineNumbers />);
+    expect(screen.getByText("bash")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Copy code to clipboard" })).toBeTruthy();
+    const { container } = render(<DocCodeBlock language="bash" code={"a\nb\nc"} showLineNumbers />);
+    expect(container.querySelectorAll(".mk-doccode__ln").length).toBe(3);
+  });
+
+  it("tabbed form renders a tablist and switches the active tab on click", () => {
+    render(
+      <DocCodeBlock
+        tabs={[
+          { label: "Node", language: "javascript", code: "const a = 1;" },
+          { label: "Python", language: "python", code: "a = 1" },
+        ]}
+      />,
+    );
+    const tabs = screen.getAllByRole("tab");
+    expect(tabs).toHaveLength(2);
+    expect(tabs[0]!.getAttribute("aria-selected")).toBe("true");
+    fireEvent.click(tabs[1]!);
+    expect(tabs[1]!.getAttribute("aria-selected")).toBe("true");
+    expect(tabs[1]!.className).toContain("mk-doccode__tab--active");
+  });
+});
+
+describe("Prose", () => {
+  it("wraps content in the .mk-prose scale", () => {
+    const { container } = render(
+      <Prose>
+        <h2>Heading</h2>
+        <p>Body</p>
+      </Prose>,
+    );
+    expect(container.querySelector(".mk-prose")).toBeTruthy();
   });
 });
 
