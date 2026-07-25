@@ -37,6 +37,101 @@
   background: var(--mk-lavender-wash);
 }
 
+/* ── Callout (docs §13b): status-color panel — note/tip/info/warn/danger ─────── */
+
+.mk-callout {
+  background: var(--mk-paper);
+  color: var(--mk-ink);
+  border: var(--mk-border-panel) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+  box-shadow: var(--mk-shadow-sm);
+  margin: 1.125rem 0;
+}
+.mk-callout__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: var(--mk-border-panel) solid var(--mk-ink);
+  background: var(--mk-yellow);
+  color: var(--mk-onlight);
+}
+.mk-callout__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  flex: 0 0 auto;
+  border: var(--mk-border-chip) solid currentColor;
+  border-radius: var(--mk-radius);
+  transform: rotate(-12deg);
+}
+.mk-callout__title {
+  font-family: var(--mk-font-mono);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.mk-callout__body {
+  padding: 0.75rem 0.875rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--mk-ink);
+}
+.mk-callout--note .mk-callout__bar {
+  background: var(--mk-yellow);
+}
+.mk-callout--tip .mk-callout__bar {
+  background: var(--mk-mint);
+}
+.mk-callout--info .mk-callout__bar {
+  background: var(--mk-cyan);
+}
+.mk-callout--warn .mk-callout__bar {
+  background: var(--mk-pink);
+  color: var(--mk-cream);
+}
+.mk-callout--danger .mk-callout__bar {
+  background: var(--mk-red);
+  color: var(--mk-cream);
+}
+
+/* ── Method badge (docs §13c): HTTP method chip — GET/POST/PUT/PATCH/DELETE ───── */
+
+.mk-method {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mk-font-mono);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  padding: 0.1875rem 0.5625rem;
+  color: var(--mk-onlight);
+  border: var(--mk-border-chip) solid var(--mk-ink);
+  border-radius: var(--mk-radius);
+}
+.mk-method--get {
+  background: var(--mk-green);
+  color: var(--mk-cream);
+}
+.mk-method--post {
+  background: var(--mk-violet);
+  color: var(--mk-cream);
+}
+.mk-method--put {
+  background: var(--mk-yellow);
+}
+.mk-method--patch {
+  background: var(--mk-action);
+  color: var(--mk-cream);
+}
+.mk-method--delete {
+  background: var(--mk-pink);
+  color: var(--mk-cream);
+}
+
 /* ── Console window (§01): a tilted-slightly panel with a title bar + dots ───── */
 
 .mk-console {
