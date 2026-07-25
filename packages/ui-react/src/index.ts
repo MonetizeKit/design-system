@@ -42,3 +42,7 @@ export { SocialIcon } from "./components/SocialIcon.js";
 export type { SocialIconProps } from "./components/SocialIcon.js";
 export { MonetizeKitBadge, MonetizeKitWordmark } from "./components/BrandMark.js";
 export type { BrandMarkProps, WordmarkProps } from "./components/BrandMark.js";
+export { Callout } from "./components/Callout.js";
+export type { CalloutProps } from "./components/Callout.js";
+export { MethodBadge } from "./components/MethodBadge.js";
+export type { MethodBadgeProps } from "./components/MethodBadge.js";

@@ -4,11 +4,13 @@ import { afterEach, describe, expect, it } from "vitest";
 import {
   Badge,
   Button,
+  Callout,
   Card,
   ConsoleWindow,
   Icon,
   IconTile,
   Input,
+  MethodBadge,
   MonetizeKitThemeProvider,
   Section,
   SocialIcon,
@@ -112,6 +114,29 @@ describe("SocialIcon", () => {
   });
 });
 
+describe("Callout", () => {
+  it("maps a tone to its modifier and renders the default label + body", () => {
+    render(<Callout tone="warn">Heads up.</Callout>);
+    const title = screen.getByText("Warning");
+    expect(title.closest(".mk-callout")!.className).toContain("mk-callout--warn");
+    expect(screen.getByText("Heads up.")).toBeTruthy();
+  });
+
+  it("accepts a custom title", () => {
+    render(<Callout tone="tip" title="Pro tip">body</Callout>);
+    expect(screen.getByText("Pro tip")).toBeTruthy();
+  });
+});
+
+describe("MethodBadge", () => {
+  it("maps each HTTP method to its modifier and renders the label", () => {
+    render(<MethodBadge method="DELETE" />);
+    const el = screen.getByText("DELETE");
+    expect(el.className).toContain("mk-method");
+    expect(el.className).toContain("mk-method--delete");
+  });
+});
+
 describe("MonetizeKitThemeProvider", () => {
   it("resolves dark mode: data-theme=dark and inverted neutral vars", () => {
     const { container } = render(
@@ -150,6 +175,8 @@ describe("a11y (axe-core)", () => {
             <ConsoleWindow title="mk.check()">ok</ConsoleWindow>
             <Input aria-label="API key" />
             <Button>Save</Button>
+            <MethodBadge method="POST" />
+            <Callout tone="tip" title="Tip">Idempotency keys are honoured.</Callout>
           </Card>
         </Section>
       </main>,
