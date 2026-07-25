@@ -37,6 +37,7 @@ export {
   onColorCssVars,
   mkContractVars,
   cssVarsToDeclarations,
+  paletteModeSelector,
 } from "./css.js";
 export { monetizekitPreset } from "./tailwind-preset.js";
 

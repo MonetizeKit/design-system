@@ -192,3 +192,7 @@
   padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 5vw, 4rem);
   border-bottom: var(--mk-border-panel) solid var(--mk-ink);
 }
+
+/* The docs §13 callout + method-badge classes (.mk-callout*, .mk-method*) live in
+   @monetizekit/brand/primitives.css (imported above), alongside .mk-verdict — so brand-only
+   consumers (e.g. the docs app) get them without pulling in this component stylesheet. */

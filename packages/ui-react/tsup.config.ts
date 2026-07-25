@@ -4,6 +4,7 @@ export default defineConfig({
   entry: {
     index: "src/index.ts",
     contract: "src/contract.ts",
+    client: "src/client.ts",
   },
   format: ["esm", "cjs"],
   dts: true,

@@ -26,6 +26,11 @@
       "import": "./dist/contract.js",
       "require": "./dist/contract.cjs"
     },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js",
+      "require": "./dist/client.cjs"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "files": [

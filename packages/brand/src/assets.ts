@@ -5,10 +5,13 @@
  * `@monetizekit/brand/assets/<path>` (see the package `exports` map).
  */
 
+import { ICON_META, ICON_NAMES } from "./icons.js";
+import { SOCIAL_META, SOCIAL_NAMES } from "./social.js";
+
 /** Package subpath prefix for raw asset imports. */
 export const ASSET_BASE = "@monetizekit/brand/assets" as const;
 
-export type AssetKind = "logo" | "icon" | "social";
+export type AssetKind = "logo" | "icon" | "social" | "glyph";
 
 export interface AssetEntry {
   /** Subpath under the package's `assets` export, e.g. `logo/icon.svg`. */
@@ -51,6 +54,33 @@ export const RASTER_ICONS = [
   { path: "icons/maskable-512.png", kind: "icon", type: "image/png", width: 512, height: 512, description: "Maskable PWA icon 512" },
 ] as const satisfies readonly AssetEntry[];
 
+/**
+ * Line-icon glyph SVGs (§07/§08) — generated from the `icons.ts` registry at build time into
+ * `dist/assets/icons/glyphs/<name>.svg`, so the standalone assets and the React `Icon` component
+ * share one geometry source.
+ */
+export const GLYPH_ICON_ASSETS: readonly AssetEntry[] = ICON_NAMES.map((name) => ({
+  path: `icons/glyphs/${name}.svg`,
+  kind: "glyph",
+  type: "image/svg+xml",
+  width: 24,
+  height: 24,
+  description: `${ICON_META[name].label} line icon`,
+}));
+
+/**
+ * Social glyph SVGs (§footer) — generated from the `social.ts` registry into
+ * `dist/assets/social/<name>.svg`.
+ */
+export const SOCIAL_ICON_ASSETS: readonly AssetEntry[] = SOCIAL_NAMES.map((name) => ({
+  path: `social/${name}.svg`,
+  kind: "social",
+  type: "image/svg+xml",
+  width: 24,
+  height: 24,
+  description: `${SOCIAL_META[name].label} icon`,
+}));
+
 /** Social/OG assets. */
 export const SOCIAL_ASSETS = {
   ogDefaultSvg: { path: "og/og-default.svg", kind: "social", type: "image/svg+xml", width: 1200, height: 630, description: "Default OG source (1200×630)" },
@@ -62,6 +92,8 @@ export const ASSETS: readonly AssetEntry[] = [
   ...Object.values(LOGO_ASSETS),
   ...Object.values(ICON_ASSETS),
   ...RASTER_ICONS,
+  ...GLYPH_ICON_ASSETS,
+  ...SOCIAL_ICON_ASSETS,
   ...Object.values(SOCIAL_ASSETS),
 ];
 

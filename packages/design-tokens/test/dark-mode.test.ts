@@ -138,16 +138,18 @@ describe("§12 dark mode — snapshots", () => {
 describe("§12 dark mode — built tokens.css artifact", () => {
   const css = readFileSync(distTokensCss, "utf8");
 
-  it("includes the :root, [data-theme=\"dark\"], .on-color, and [data-palette] blocks", () => {
+  it("includes the :root, dark (attribute + .dark class), .on-color, and [data-palette] blocks", () => {
     expect(css).toContain(":root {");
-    expect(css).toContain('[data-theme="dark"] {');
+    // Dark is emitted under BOTH the attribute and the .dark class alias (centralized so consumers
+    // never hand-mirror it) — see paletteModeSelector.
+    expect(css).toContain('[data-theme="dark"], .dark {');
     expect(css).toContain(".on-color {");
     expect(css).toContain('[data-palette="nord"] {');
-    expect(css).toContain('[data-palette="nord"][data-theme="dark"] {');
+    expect(css).toContain('[data-palette="nord"][data-theme="dark"], [data-palette="nord"].dark {');
   });
 
-  it("inverts the ramp + dims the shadow inside [data-theme=\"dark\"]", () => {
-    const dark = css.slice(css.indexOf('[data-theme="dark"] {'));
+  it("inverts the ramp + dims the shadow inside the default dark block", () => {
+    const dark = css.slice(css.indexOf('[data-theme="dark"], .dark {'));
     const darkBlock = dark.slice(0, dark.indexOf("}"));
     expect(darkBlock).toContain("--mk-cream: #191811;");
     expect(darkBlock).toContain("--mk-ink: #FFFEF3;");

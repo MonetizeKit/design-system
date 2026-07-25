@@ -63,6 +63,8 @@ export function ogTemplate(props: OgTemplateProps = {}): OgNode {
       node("div", {
         style: {
           display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           width: "160px",
           height: "160px",
           marginBottom: "auto",
@@ -70,7 +72,10 @@ export function ogTemplate(props: OgTemplateProps = {}): OgNode {
           border: `10px solid ${ink}`,
           boxShadow: `18px 18px 0 0 ${ink}`,
         },
-        children: "",
+        children: node("div", {
+          style: { fontSize: "94px", fontWeight: 900, letterSpacing: "-3px", color: ink, lineHeight: 1 },
+          children: "MK",
+        }),
       }),
       node("div", {
         style: {

@@ -13,7 +13,15 @@ const srcDir = resolve(pkgDir, "src");
 const assetsSrc = resolve(pkgDir, "assets");
 const assetsDist = resolve(distDir, "assets");
 
-const { ASSETS } = await import(resolve(distDir, "index.js"));
+const {
+  ASSETS,
+  ICON_GLYPHS,
+  ICON_VIEWBOX,
+  ICON_STROKE_WIDTH,
+  glyphToSvgChildren,
+  SOCIAL_GLYPHS,
+  SOCIAL_VIEWBOX,
+} = await import(resolve(distDir, "index.js"));
 
 await mkdir(distDir, { recursive: true });
 
@@ -52,7 +60,30 @@ await Promise.all([
 // OG PNG (1200×630, non-square).
 await sharp(ogSvg, { density: 192 }).resize(1200, 630, { fit: "contain", background: CREAM }).png().toFile(resolve(assetsDist, "og/og-default.png"));
 
-// 4) Machine-readable manifest.
+// 4) Generate the line-icon + social glyph SVGs from the registry (single source of truth).
+await mkdir(resolve(assetsDist, "icons/glyphs"), { recursive: true });
+await mkdir(resolve(assetsDist, "social"), { recursive: true });
+
+const iconSvgFor = (nodes) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${ICON_VIEWBOX}" fill="none" stroke="currentColor" ` +
+  `stroke-width="${ICON_STROKE_WIDTH}" stroke-linecap="round" stroke-linejoin="round">${glyphToSvgChildren(nodes)}</svg>\n`;
+
+await Promise.all(
+  Object.entries(ICON_GLYPHS).map(([name, nodes]) =>
+    writeFile(resolve(assetsDist, `icons/glyphs/${name}.svg`), iconSvgFor(nodes), "utf8"),
+  ),
+);
+
+const socialSvgFor = (d) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${SOCIAL_VIEWBOX}" fill="currentColor"><path d="${d}"/></svg>\n`;
+
+await Promise.all(
+  Object.entries(SOCIAL_GLYPHS).map(([name, d]) =>
+    writeFile(resolve(assetsDist, `social/${name}.svg`), socialSvgFor(d), "utf8"),
+  ),
+);
+
+// 5) Machine-readable manifest.
 await writeFile(
   resolve(distDir, "assets.json"),
   `${JSON.stringify({ $description: "MonetizeKit brand asset manifest (Brand Direction v0.8).", assets: ASSETS }, null, 2)}\n`,

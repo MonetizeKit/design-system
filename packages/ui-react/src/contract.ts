@@ -67,3 +67,36 @@ export interface ThemeContract {
   palette?: PaletteName;
   mode?: ModeSetting;
 }
+
+/**
+ * Documentation callout tones (§13b), mapped to the brand status-color family:
+ * `note` → yellow, `tip` → mint, `info` → cyan, `warn` → pink, `danger` → red.
+ */
+export type CalloutTone = "note" | "tip" | "info" | "warn" | "danger";
+
+export interface CalloutContract {
+  tone?: CalloutTone;
+}
+
+/** HTTP method vocabulary for the docs API kit (§13c). */
+export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+
+export interface MethodContract {
+  method: HttpMethod;
+}
+
+/** Documentation page-shell header (§13a): title + optional lede on the brand display scale. */
+export interface DocPageHeaderContract {
+  title: string;
+  description?: string;
+}
+
+/** A single tab in a documentation code block (§13d). */
+export interface DocCodeTab {
+  /** Tab label (e.g. "cURL", "Node", "Python"); also used as the language chip when untabbed. */
+  label: string;
+  /** Source to render (and copy). */
+  code: string;
+  /** Language hint for the corner chip / aria label. */
+  language?: string;
+}
