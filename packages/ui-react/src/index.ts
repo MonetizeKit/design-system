@@ -48,5 +48,7 @@ export { MethodBadge } from "./components/MethodBadge.js";
 export type { MethodBadgeProps } from "./components/MethodBadge.js";
 export { Prose } from "./components/Prose.js";
 export type { ProseProps } from "./components/Prose.js";
+export { DocPageHeader } from "./components/DocPageHeader.js";
+export type { DocPageHeaderProps } from "./components/DocPageHeader.js";
 // Interactive (client-only) components live in the "./client" entry so this root stays RSC-safe:
 //   import { DocCodeBlock } from "@monetizekit/ui-react/client";

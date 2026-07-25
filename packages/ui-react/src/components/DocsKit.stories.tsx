@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Callout } from "./Callout.js";
 import { MethodBadge } from "./MethodBadge.js";
 import { DocCodeBlock } from "./DocCodeBlock.js";
+import { DocPageHeader } from "./DocPageHeader.js";
 import { Prose } from "./Prose.js";
+import { Button } from "./Button.js";
 import type { HttpMethod } from "../contract.js";
 
 /**
@@ -64,6 +66,22 @@ export const CodeBlockTabbed: Story = {
           { label: "cURL", language: "bash", code: "curl .../v1/entitlements/seat -H 'Authorization: Bearer …'" },
         ]}
       />
+    </div>
+  ),
+};
+
+export const PageHeader: Story = {
+  render: () => (
+    <div style={{ display: "grid", gap: "1.5rem", maxWidth: 720 }}>
+      <DocPageHeader
+        title="Entitlement patterns"
+        description="Recommended ways to model access decisions with MonetizeKit."
+      >
+        <Button variant="secondary" size="sm">
+          Copy page
+        </Button>
+      </DocPageHeader>
+      <DocPageHeader title="Quickstart" description="No actions — title + lede only." />
     </div>
   ),
 };

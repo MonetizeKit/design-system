@@ -85,6 +85,12 @@ export interface MethodContract {
   method: HttpMethod;
 }
 
+/** Documentation page-shell header (§13a): title + optional lede on the brand display scale. */
+export interface DocPageHeaderContract {
+  title: string;
+  description?: string;
+}
+
 /** A single tab in a documentation code block (§13d). */
 export interface DocCodeTab {
   /** Tab label (e.g. "cURL", "Node", "Python"); also used as the language chip when untabbed. */

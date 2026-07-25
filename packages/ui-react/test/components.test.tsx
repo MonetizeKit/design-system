@@ -7,6 +7,7 @@ import {
   Callout,
   Card,
   ConsoleWindow,
+  DocPageHeader,
   Icon,
   IconTile,
   Input,
@@ -175,6 +176,32 @@ describe("Prose", () => {
       </Prose>,
     );
     expect(container.querySelector(".mk-prose")).toBeTruthy();
+  });
+});
+
+describe("DocPageHeader", () => {
+  it("renders the title as a level-1 heading on the brand display scale", () => {
+    render(<DocPageHeader title="Entitlement patterns" description="How to model access." />);
+    const heading = screen.getByRole("heading", { level: 1, name: "Entitlement patterns" });
+    expect(heading.className).toContain("mk-doc-header__title");
+    expect(screen.getByText("How to model access.").className).toContain("mk-doc-header__desc");
+  });
+
+  it("omits the lede and the action slot when not provided", () => {
+    const { container } = render(<DocPageHeader title="Quickstart" />);
+    expect(container.querySelector(".mk-doc-header__desc")).toBeNull();
+    expect(container.querySelector(".mk-doc-header__actions")).toBeNull();
+  });
+
+  it("renders children in the action slot", () => {
+    const { container } = render(
+      <DocPageHeader title="Guides">
+        <button type="button">Copy page</button>
+      </DocPageHeader>,
+    );
+    const actions = container.querySelector(".mk-doc-header__actions")!;
+    expect(actions).toBeTruthy();
+    expect(actions.querySelector("button")!.textContent).toBe("Copy page");
   });
 });
 

@@ -301,6 +301,51 @@
   margin: 2rem 0;
 }
 
+/* ── Doc page header (docs §13a): page-shell title/description on brand display type ─
+ * The reused app dashboard page header renders the title as plain bold body text; §13 wants the
+ * documentation page title on the brand DISPLAY scale (heavier weight, display tracking, ink) with a
+ * muted lede and a right-aligned action slot. Token-driven, so it inverts with the page in dark mode. */
+
+.mk-doc-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .mk-doc-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.mk-doc-header__heading {
+  min-width: 0;
+}
+.mk-doc-header__title {
+  margin: 0;
+  font-family: var(--mk-font-sans);
+  font-weight: var(--mk-display-weight);
+  letter-spacing: var(--mk-tracking-display);
+  font-size: 1.75rem;
+  line-height: 1.15;
+  color: var(--mk-ink);
+  text-wrap: balance;
+}
+.mk-doc-header__desc {
+  margin: 0.375rem 0 0;
+  font-family: var(--mk-font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--mk-muted);
+}
+.mk-doc-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 /* ── Console window (§01): a tilted-slightly panel with a title bar + dots ───── */
 
 .mk-console {
