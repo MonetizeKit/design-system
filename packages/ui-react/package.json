@@ -58,6 +58,7 @@
     "@monetizekit/design-tokens": "workspace:^"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.0",
     "@storybook/react": "^8.6.0",
     "@storybook/react-vite": "^8.6.0",
     "@testing-library/react": "^16.1.0",
