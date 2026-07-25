@@ -1,5 +1,14 @@
 # @monetizekit/design-tokens
 
+## 0.4.0
+
+### Minor Changes
+
+- badadef: Add the social + endorsement brand colors from the v0.8 board so downstream layers can token-reference them: `--mk-soc-cyan` (`#02D9FF`), `--mk-soc-yellow` (`#FFD240`), `--mk-soc-green` (`#B6FFB6`) for the footer social tiles, and `--mk-purple` (`#4F46E5`) / `--mk-purple-d` (`#3730B5`) for endorsement accents. These are saturated constants (identical in light and dark).
+- 74d3995: Centralize the dark-mode contract: `tokens.css` now emits the default and per-palette dark blocks under **both** `[data-theme="dark"]` **and** the `.dark` class alias (e.g. `[data-theme="dark"], .dark { … }` and `[data-palette="nord"][data-theme="dark"], [data-palette="nord"].dark { … }`).
+
+  Consumers that drive dark mode with a class strategy (Tailwind's `dark:` variant, `next-themes`' `class` attribute) now get the complete brand dark contract — inverted neutrals, dimmed `--mk-shade`, and the full shadcn semantic set — directly from the package, and no longer need to hand-mirror the `[data-theme="dark"]` values onto `.dark` per app to get reliable content repaint on a live toggle. The new `paletteModeSelector(palette, mode)` helper is exported so the selector policy is a single, tested source of truth.
+
 ## 0.3.0
 
 ### Minor Changes

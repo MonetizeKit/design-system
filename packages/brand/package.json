@@ -1,6 +1,6 @@
 {
   "name": "@monetizekit/brand",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MonetizeKit brand identity (Brand Direction v0.8) — framework-agnostic brand.css utilities, signature primitives, and the canonical media asset system (logo/icons/social/OG), built on @monetizekit/design-tokens.",
   "license": "MIT",
   "repository": {
