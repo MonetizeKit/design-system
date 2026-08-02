@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const SITE_URL = "https://internal-ui.monetizekit.app";
@@ -40,6 +41,9 @@ const BRAND_SOCIAL = `
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx)"],
   addons: ["@storybook/addon-essentials"],
+  presets: [
+    fileURLToPath(new URL("./favicon-preset.ts", import.meta.url)),
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {},

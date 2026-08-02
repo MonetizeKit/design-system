@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
 import { describe, expect, it } from "vitest";
 import storybookConfig from "../.storybook/main.js";
+import { favicon } from "../.storybook/favicon-preset.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const storybookDir = resolve(here, "..", ".storybook");
@@ -17,6 +18,10 @@ function renderHead(transform: StorybookConfig["managerHead"] | StorybookConfig[
 
 describe("Storybook brand publication", () => {
   it("serves the package assets at /brand and publishes an install manifest", () => {
+    expect(storybookConfig.presets).toEqual([
+      expect.stringMatching(/packages\/ui-react\/\.storybook\/favicon-preset\.ts$/),
+    ]);
+    expect(favicon()).toMatch(/manifest\.webmanifest$/);
     expect(storybookConfig.staticDirs).toEqual([
       "./public",
       { from: "../../brand/dist/assets", to: "/brand" },
