@@ -1,8 +1,8 @@
-import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 
 /**
  * Storybook injects its own `./favicon.svg` outside `managerHead`.
  * Resolve a non-icon file so only the canonical package-backed links are emitted.
  */
 export const favicon = () =>
-  fileURLToPath(new URL("./public/manifest.webmanifest", import.meta.url));
+  resolve(process.cwd(), ".storybook/public/manifest.webmanifest");
