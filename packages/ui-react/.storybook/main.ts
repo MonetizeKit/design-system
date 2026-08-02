@@ -1,6 +1,10 @@
 import { resolve } from "node:path";
 import type { StorybookConfig } from "@storybook/react-vite";
 
+interface StorybookConfigWithPresets extends StorybookConfig {
+  presets: string[];
+}
+
 const SITE_URL = "https://internal-ui.monetizekit.app";
 const OG_IMAGE = `${SITE_URL}/brand/og/og-default.png`;
 
@@ -38,7 +42,7 @@ const BRAND_SOCIAL = `
     <meta name="twitter:image" content="${OG_IMAGE}" />
     <meta name="twitter:image:alt" content="MonetizeKit — The monetization control plane" />`;
 
-const config: StorybookConfig = {
+const config: StorybookConfigWithPresets = {
   stories: ["../src/**/*.stories.@(ts|tsx)"],
   addons: ["@storybook/addon-essentials"],
   presets: [
