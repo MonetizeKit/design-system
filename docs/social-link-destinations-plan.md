@@ -16,7 +16,7 @@ GitHub remains available at `https://github.com/MonetizeKit`.
 ## Plan
 
 - [x] Locate the shared owner of footer social links and glyphs.
-- [ ] Add Reddit to the typed brand social registry.
-- [ ] Update the shared footer defaults to the canonical destinations.
-- [ ] Verify generated assets, rendering, accessibility, types, and package builds.
-- [ ] Document the expanded social set and release impact.
+- [x] Add Reddit to the typed brand social registry.
+- [x] Update the shared footer defaults to the canonical destinations.
+- [x] Verify generated assets, rendering, accessibility, types, and package builds.
+- [x] Document the expanded social set and release impact.
