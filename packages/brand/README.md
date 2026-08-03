@@ -41,10 +41,11 @@ import "@monetizekit/brand/primitives.css"; // verdict pill, console window, sta
 - **`primitives.css`** — `.mk-verdict--{allow,deny,require-top-up,degrade,recorded}`,
   `.mk-console`, `.mk-statcard`, `.mk-decor--{circle,square,triangle}`, `.mk-icon`,
   `.mk-icon-tile--{orange,violet,pink,green,cyan,yellow,mint,peach}`, and
-  `.mk-social--{cyan,yellow,green}` (§01/§07/§08/§10/footer).
+  `.mk-social--{cyan,yellow,green,orange}` (§01/§07/§08/§10/footer).
 - **Iconography** (`icons.ts` / `social.ts`) — the canonical line-icon set (catalog, enforcement,
   credits, usage, metering, approvals, workflows, experiments, contracts, code, shield) with
-  per-icon category + label (`ICON_META`), and the Twitter/X · GitHub · LinkedIn social glyphs.
+  per-icon category + label (`ICON_META`), and the Twitter/X · GitHub · LinkedIn · Reddit social
+  glyphs.
   Glyph geometry is the single source of truth: both the standalone `assets/icons/glyphs/*.svg` /
   `assets/social/*.svg` and the React `Icon` render from it.
 - **Media asset system** (`@monetizekit/brand/assets/*`) — logo/mark SVG sources (upright + tilted
