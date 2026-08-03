@@ -3,10 +3,12 @@ import axe from "axe-core";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   Badge,
+  BrandFooter,
   Button,
   Callout,
   Card,
   ConsoleWindow,
+  DEFAULT_FOOTER_SOCIAL,
   DocPageHeader,
   Icon,
   IconTile,
@@ -114,6 +116,29 @@ describe("SocialIcon", () => {
     expect(link.className).toContain("mk-social--yellow");
     const svg = link.querySelector("svg")!;
     expect(svg.getAttribute("fill")).toBe("currentColor");
+  });
+});
+
+describe("BrandFooter", () => {
+  it("uses the canonical social destinations", () => {
+    expect(DEFAULT_FOOTER_SOCIAL).toEqual([
+      { name: "twitter", href: "https://x.com/MonetizeKit" },
+      { name: "github", href: "https://github.com/MonetizeKit" },
+      { name: "linkedin", href: "https://www.linkedin.com/company/monetizekit" },
+      { name: "reddit", href: "https://www.reddit.com/user/Brandon-MonetizeKit/" },
+    ]);
+
+    render(<BrandFooter year={2026} />);
+
+    expect(screen.getByRole("link", { name: "Twitter / X" }).getAttribute("href")).toBe(
+      "https://x.com/MonetizeKit",
+    );
+    expect(screen.getByRole("link", { name: "LinkedIn" }).getAttribute("href")).toBe(
+      "https://www.linkedin.com/company/monetizekit",
+    );
+    expect(screen.getByRole("link", { name: "Reddit" }).getAttribute("href")).toBe(
+      "https://www.reddit.com/user/Brandon-MonetizeKit/",
+    );
   });
 });
 

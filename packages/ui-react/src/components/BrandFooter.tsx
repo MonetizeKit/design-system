@@ -61,11 +61,12 @@ export const DEFAULT_FOOTER_COLUMNS: FooterColumn[] = [
   },
 ];
 
-/** The canonical social tiles (§footer): Twitter/X (cyan), GitHub (yellow), LinkedIn (green). */
+/** Canonical social tiles (§footer): Twitter/X, GitHub, LinkedIn, and Reddit. */
 export const DEFAULT_FOOTER_SOCIAL: FooterSocial[] = [
-  { name: "twitter", href: "https://x.com/monetizekit" },
+  { name: "twitter", href: "https://x.com/MonetizeKit" },
   { name: "github", href: "https://github.com/MonetizeKit" },
   { name: "linkedin", href: "https://www.linkedin.com/company/monetizekit" },
+  { name: "reddit", href: "https://www.reddit.com/user/Brandon-MonetizeKit/" },
 ];
 
 /** The canonical legal links shown in the sub-footer. */
