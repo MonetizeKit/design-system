@@ -112,8 +112,8 @@ describe("icon + social registry (§07/§08/footer)", () => {
     expect(glyphToSvgChildren(ICON_GLYPHS.workflows)).toContain("<rect");
   });
 
-  it("exposes the three social glyphs with fill path data", () => {
-    expect(SOCIAL_NAMES).toEqual(["twitter", "github", "linkedin"]);
+  it("exposes the canonical social glyphs with fill path data", () => {
+    expect(SOCIAL_NAMES).toEqual(["twitter", "github", "linkedin", "reddit"]);
     for (const name of SOCIAL_NAMES) {
       expect(SOCIAL_GLYPHS[name].startsWith("M")).toBe(true);
     }

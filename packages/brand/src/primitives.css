@@ -501,6 +501,9 @@
 .mk-social--green {
   background: var(--mk-soc-green);
 }
+.mk-social--orange {
+  background: var(--mk-action);
+}
 
 /* ── Decorative shapes (§03): drift low-opacity in margins; never over body/panels ─ */
 

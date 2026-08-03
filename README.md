@@ -48,6 +48,11 @@ The `@monetizekit/ui-react` Storybook is the internal **primitive gallery** and 
   `pnpm turbo run build-storybook --filter=@monetizekit/ui-react` → `packages/ui-react/storybook-static`.
   The `build-storybook` turbo task `dependsOn: ["^build"]`, so `@monetizekit/design-tokens` and
   `@monetizekit/brand` are built before the gallery.
+- **Brand assets:** the built `@monetizekit/brand` asset tree is served at `/brand`. Storybook's
+  manager and preview heads use those shared favicon, Apple touch, mask, install, and social-card
+  assets; the manager logo also references the shared tilted badge rather than embedding geometry.
+- **Metadata:** the manager emits canonical Open Graph and Twitter metadata for
+  `https://internal-ui.monetizekit.app`, and `/manifest.webmanifest` references the shared PWA icons.
 - **Promotion pattern (same as every other surface):** push to `development` / `delivery` → Vercel
   preview deploys; push to `main` (the production branch) → production deploy on
   `internal-ui.monetizekit.app`. DNS is Vercel-managed for `monetizekit.app`, so the subdomain record is

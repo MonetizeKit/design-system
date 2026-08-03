@@ -1,0 +1,14 @@
+{
+  "name": "MonetizeKit Internal UI",
+  "short_name": "MK Internal UI",
+  "description": "MonetizeKit design-system primitive gallery — tokens, brand assets, and shared React components.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFEF3",
+  "theme_color": "#FFFEF3",
+  "icons": [
+    { "src": "/brand/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/brand/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/brand/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
