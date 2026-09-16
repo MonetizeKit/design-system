@@ -1,5 +1,12 @@
 # @monetizekit/brand
 
+## 0.2.1
+
+### Patch Changes
+
+- 2ffe2f9: Add a Reddit social glyph and publish the canonical Twitter/X, LinkedIn, and
+  Reddit destinations from the shared brand footer.
+
 ## 0.2.0
 
 ### Minor Changes

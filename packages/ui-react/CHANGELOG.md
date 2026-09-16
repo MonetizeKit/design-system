@@ -1,5 +1,16 @@
 # @monetizekit/ui-react
 
+## 0.3.2
+
+### Patch Changes
+
+- 2ffe2f9: Add a Reddit social glyph and publish the canonical Twitter/X, LinkedIn, and
+  Reddit destinations from the shared brand footer.
+- 076deec: Publish the shared brand asset tree from the internal Storybook and use it for
+  canonical browser, install, social-card, and manager branding.
+- Updated dependencies [2ffe2f9]
+  - @monetizekit/brand@0.2.1
+
 ## 0.3.1
 
 ### Patch Changes
