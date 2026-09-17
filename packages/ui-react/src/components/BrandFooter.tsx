@@ -56,6 +56,7 @@ export const DEFAULT_FOOTER_COLUMNS: FooterColumn[] = [
       { label: "About", href: "https://www.monetizekit.app/about" },
       { label: "Security", href: "https://www.monetizekit.app/security" },
       { label: "Trust", href: "https://www.monetizekit.app/trust" },
+      { label: "AI Information", href: "https://www.monetizekit.app/w/ai-info" },
       { label: "Status", href: "https://www.monetizekit.app/status" },
     ],
   },
