@@ -2,9 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, delivery, development]
   pull_request:
-    branches: [main]
+    branches: [main, delivery, development]
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -12,6 +13,7 @@ concurrency:
 
 jobs:
   build-test-lint:
+    name: Lint, Typecheck, Build, Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,3 +39,34 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+  # Shadow-mode reviewer from MonetizeKit/.github: one advisory comment per PR,
+  # never blocks (the reusable workflow is continue-on-error internally and
+  # self-skips without a credential), and is not part of required-checks.
+  # Model, tools and route come from the fleet agent-policy.json.
+  shadow-review:
+    name: Shadow Review (advisory)
+    if: ${{ github.event_name == 'pull_request' }}
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: MonetizeKit/.github/.github/workflows/reusable-pr-review.yml@v1
+    secrets: inherit
+
+  # Stable branch-protection context, same name as every other repo in the fleet.
+  required-checks:
+    name: Required Checks Gate
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs:
+      - build-test-lint
+    steps:
+      - name: Validate required checks passed
+        shell: bash
+        run: |
+          status="${{ needs.build-test-lint.result }}"
+          if [ "${status}" != "success" ]; then
+            echo "Required check failed: build-test-lint => ${status}"
+            exit 1
+          fi
+          echo "All required checks passed."

@@ -1,0 +1,4 @@
+{
+  "name": "@monetizekit/design-system",
+  "install": "pnpm install --frozen-lockfile"
+}
