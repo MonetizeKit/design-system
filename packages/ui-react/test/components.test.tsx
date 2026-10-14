@@ -8,6 +8,7 @@ import {
   Callout,
   Card,
   ConsoleWindow,
+  DEFAULT_FOOTER_COLUMNS,
   DEFAULT_FOOTER_SOCIAL,
   DocPageHeader,
   Icon,
@@ -138,6 +139,20 @@ describe("BrandFooter", () => {
     );
     expect(screen.getByRole("link", { name: "Reddit" }).getAttribute("href")).toBe(
       "https://www.reddit.com/user/Brandon-MonetizeKit/",
+    );
+  });
+
+  it("links the canonical AI information page from the Resources column", () => {
+    const resources = DEFAULT_FOOTER_COLUMNS.find((column) => column.heading === "Resources");
+    expect(resources?.links).toContainEqual({
+      label: "AI Information",
+      href: "https://www.monetizekit.app/w/ai-info",
+    });
+
+    render(<BrandFooter year={2026} />);
+
+    expect(screen.getByRole("link", { name: "AI Information" }).getAttribute("href")).toBe(
+      "https://www.monetizekit.app/w/ai-info",
     );
   });
 });
