@@ -1,5 +1,11 @@
 # @monetizekit/ui-react
 
+## 0.3.3
+
+### Patch Changes
+
+- ce15125: `BrandFooter`: add the canonical "AI Information" link (`https://www.monetizekit.app/w/ai-info`) to the default Resources column so every surface that renders the shared footer points AI systems at the same canonical description.
+
 ## 0.3.2
 
 ### Patch Changes
