@@ -21,23 +21,9 @@ jobs:
         with:
           node-version: 20
 
-      # The release PR is pushed and opened by the automation account so its CI
-      # runs; a PR pushed by GITHUB_TOKEN has its pull_request runs parked as
-      # action_required and the required gate never reports. Without the
-      # credential this falls back to GITHUB_TOKEN.
-      - name: Fetch automation secrets from Phase
-        env:
-          PHASE_TOKEN: ${{ secrets.PHASE_SDLC_TOKEN }}
-          PHASE_ENV: sdlc
-          PHASE_APP_ID: 026988b7-1ffa-499c-913b-3d0f031c4e58
-        run: |
-          mkdir -p /tmp/phase-export
-          curl -fsSL "https://raw.githubusercontent.com/MonetizeKit/.github/v1/scripts/phase/export-secrets.mjs" -o /tmp/phase-export/export-secrets.mjs
-          node /tmp/phase-export/export-secrets.mjs GH_PAT
-
       - uses: actions/checkout@v4
         with:
-          token: ${{ env.GH_PAT || github.token }}
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v4
 
@@ -52,6 +38,22 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      # The release PR is pushed and opened by the automation account so its CI
+      # runs; a PR pushed by GITHUB_TOKEN has its pull_request runs parked as
+      # action_required and the required gate never reports. Without the
+      # credential this falls back to GITHUB_TOKEN. It is fetched only after
+      # install and build so dependency scripts never see it; changesets/action
+      # writes its own ~/.netrc from the token, so checkout persists nothing.
+      - name: Fetch automation secrets from Phase
+        env:
+          PHASE_TOKEN: ${{ secrets.PHASE_SDLC_TOKEN }}
+          PHASE_ENV: sdlc
+          PHASE_APP_ID: 026988b7-1ffa-499c-913b-3d0f031c4e58
+        run: |
+          mkdir -p /tmp/phase-export
+          curl -fsSL "https://raw.githubusercontent.com/MonetizeKit/.github/v1/scripts/phase/export-secrets.mjs" -o /tmp/phase-export/export-secrets.mjs
+          node /tmp/phase-export/export-secrets.mjs GH_PAT
 
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
