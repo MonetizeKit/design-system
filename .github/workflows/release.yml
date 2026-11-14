@@ -21,17 +21,6 @@ jobs:
         with:
           node-version: 22
 
-      # Publishing uses npm trusted publishing (OIDC); there is no npm token.
-      # Each package needs a trusted publisher on npmjs.com naming this
-      # repository and `release.yml` (no environment), with direct
-      # `npm publish` allowed. `pnpm publish` hands the upload to the npm CLI,
-      # which only performs the OIDC exchange from 11.5.1; Node 22 bundles npm 10.
-      - name: Install npm with trusted publishing support
-        run: |
-          npm install -g npm@11
-          node -e 'const [a,b,c]=process.argv[1].split(".").map(Number); if (a*1e6+b*1e3+c < 11005001) { console.error(`npm ${process.argv[1]} is older than 11.5.1`); process.exit(1); }' "$(npm --version)"
-          echo "npm $(npm --version)"
-
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
@@ -45,6 +34,17 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+
+      # Publishing uses npm trusted publishing (OIDC); there is no npm token.
+      # Each package needs a trusted publisher on npmjs.com naming this
+      # repository and `release.yml` (no environment), with direct
+      # `npm publish` allowed. `pnpm publish` hands the upload to the npm CLI,
+      # which only performs the OIDC exchange from 11.5.1; Node 22 bundles npm 10.
+      - name: Install npm with trusted publishing support
+        run: |
+          npm install -g npm@11
+          node -e 'const [a,b,c]=process.argv[1].split(".").map(Number); if (a*1e6+b*1e3+c < 11005001) { console.error(`npm ${process.argv[1]} is older than 11.5.1`); process.exit(1); }' "$(npm --version)"
+          echo "npm $(npm --version)"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
